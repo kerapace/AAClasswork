@@ -103,10 +103,32 @@ class Queen < Piece
 end
 
 class Pawn < Piece
+    def valid_move?(pos)
+        row, col = pos
+        _, curr_col = self.position
+        return false unless row >= 0 && row < 8 && col >= 0 && col < 8
+        if col - curr_col == 0
+            return self.board[pos].empty?
+        else
+            return !self.board[pos].empty? && self.side != self.board[pos].side
+        end
+
+    end
     def move_dirs
-        pawn_pos = self.position
-        pawn_row, pawn_col = pawn_pos
-        poss_moves = []
-        poss_moves << [1,1] if !self.board[pawn_row+1,pawn_col+1].empty? && self.valid_move?([pawn_row+1,pawn_col+1])
+        pawn_movement_dir = {black: -1, white: 1}
+        # pawn_pos = self.position
+        # pawn_row, pawn_col = pawn_pos
+        # poss_moves = []
+        # poss_moves << [1,1] if !self.board[pawn_row+1,pawn_col+1].empty? && self.valid_move?([pawn_row+1,pawn_col+1])
+        r = pawn_movement_dir[self.side]
+        [[r, -1], [r, 0], [r, 1]]
+    end
+end
+
+class NullPiece < Piece
+    include Singleton
+
+    def empty?
+        return true
     end
 end
