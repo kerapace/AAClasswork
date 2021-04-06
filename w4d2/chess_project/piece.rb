@@ -36,4 +36,29 @@ module Stepable
 end
 
 module Slideable
+    DIAGONAL_DIRS = [[1, 1], [-1, -1], [-1, 1], [1, -1]]
+    HORIZONTAL_DIRS = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+    def move_dirs
+        []
+    end
+
+    def moves
+        poss_moves = []
+        curr_row, curr_col = self.position
+        move_dirs.each do |row,col|
+            (1..7).each do |i|
+                poss_pos = [curr_row + i * row, curr_col + i * col]
+                if !@board[poss_pos].empty?
+                    if @board[poss_pos].side != self.side
+                        poss_moves << poss_pos if Board.valid_move?(poss_pos)
+                    end
+                    break
+                end
+                poss_moves << poss_pos if Board.valid_move?(poss_pos)
+
+            end
+        end
+        poss_moves
+    end
+
 end
