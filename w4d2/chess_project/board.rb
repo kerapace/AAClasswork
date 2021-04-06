@@ -24,10 +24,6 @@ class Board
         self[start_pos], self[end_pos] = :empty, self[start_pos]
     end
 
-    def self.valid_move?(pos)
-        row, col = pos
-        row >= 0 && row < 8 && col >= 0 && col < 8
-    end
     private
     def set_up_board
 
