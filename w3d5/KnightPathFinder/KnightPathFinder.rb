@@ -1,7 +1,7 @@
 require_relative "../PolyTreeNode/lib/00_tree_node.rb"
 
 class KnightPathFinder
-    attr_reader :considered_positions
+    attr_reader :root_node, :considered_positions
     def initialize(pos)
         @root_node = PolyTreeNode.new(pos)
         @considered_positions = [pos]
@@ -22,7 +22,6 @@ class KnightPathFinder
         node_queue = [@root_node]
         while !node_queue.empty?
             curr_node = node_queue.shift
-            p curr_node
             possible_positions = new_move_positions(curr_node.value)
             new_nodes = possible_positions.map{|pos| PolyTreeNode.new(pos)}
             new_nodes.each do |node|
@@ -32,4 +31,18 @@ class KnightPathFinder
         end
         @root_node
     end
+
+    def find_path(end_pos)
+        path = [end_pos]
+        curr_node = @root_node.bfs(end_pos)
+        until curr_node.parent == @root_node
+            path.unshift(curr_node.parent)
+            curr_node = curr_node.parent
+        end
+        path.unshift(@root_node)
+    end
 end
+
+kpf = KnightPathFinder.new([0,0])
+kpf.build_move_tree
+p kpf.find_path([7,7])
