@@ -39,6 +39,10 @@ class Piece
     def inspect
         sym
     end
+
+    def moves
+        []
+    end
 end
 
 module Stepable

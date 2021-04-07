@@ -25,6 +25,10 @@ class Board
         elsif !self[start_pos].valid_move?(end_pos)
             raise Exception.new("This piece can't move there!")
         end
+        if !self[end_pos].empty?
+            piece = self[end_pos]
+            @pieces[piece.side].delete(piece)
+        end
         self[start_pos], self[end_pos] = NullPiece.instance, self[start_pos]
         self[end_pos].position = end_pos
     end
@@ -61,9 +65,8 @@ class Board
             @pieces[side] << self[[f,j]]
         end
     end
+
+    def inspect
+        @grid
+    end
 end
-
-b = Board.new
-p b.king
-p b.pieces
-
