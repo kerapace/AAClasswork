@@ -127,21 +127,35 @@ end
 
 class Pawn < Piece
     include Stepable
+    attr_reader :moved
+
+    def initialize(side, board, position)
+        @moved = false
+        super
+    end
+
     def valid_move?(pos)
         row, col = pos
-        _, curr_col = self.position
+        curr_row, curr_col = self.position
         return false unless row >= 0 && row < 8 && col >= 0 && col < 8
         if col - curr_col == 0
-            return self.board[pos].empty?
+            if (curr_row - row).abs == 2
+                return self.board[pos].empty? && self.board[[curr_row + forward_dir, col]].empty?
+            else
+                return self.board[pos].empty?
+            end
         else
             return !self.board[pos].empty? && self.side != self.board[pos].side
         end
     end
 
+    def forward_dir
+        self.side == :white ? 1 : -1
+    end
+
     def move_diffs
-        pawn_movement_dir = {black: -1, white: 1}
-        r = pawn_movement_dir[self.side]
-        [[r, -1], [r, 0], [r, 1]]
+        r = self.forward_dir
+        self.moved ? [[r, -1], [r, 0], [r, 1]] : [[r, -1], [r, 0], [r, 1], [2*r, 0]]
     end
 
     def inspect
