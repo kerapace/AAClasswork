@@ -1,8 +1,11 @@
 require_relative 'piece'
 
 class Board
+    attr_reader :king, :pieces
     def initialize
         @grid = Array.new(8) {Array.new(8,NullPiece.instance)}
+        @king = {}
+        @pieces = {white: [], black: []}
         set_up_board
     end
 
@@ -26,6 +29,10 @@ class Board
         self[end_pos].position = end_pos
     end
 
+    def in_check?(side)
+        king_pos = @king[side].position
+    end
+
     private
     def set_up_board
         set_up_side(:white)
@@ -36,6 +43,7 @@ class Board
         f, s = side == :white ? [0,1] : [7,6]
         (0..7).each do |j|
             self[[s,j]] = Pawn.new(side,self,[s,j])
+            @pieces[side] << self[[s,j]]
         end
         (0..7).each do |j|
             if j == 0 || j == 7
@@ -48,8 +56,14 @@ class Board
                 self[[f,j]] = Queen.new(side,self,[f,j])
             else
                 self[[f,j]] = King.new(side,self,[f,j])
+                @king[side] = self[[f,j]]
             end
+            @pieces[side] << self[[f,j]]
         end
     end
 end
+
+b = Board.new
+p b.king
+p b.pieces
 
