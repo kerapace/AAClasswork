@@ -22,7 +22,7 @@ class Board
     def move_piece(start_pos, end_pos)
         if self[start_pos].is_a?(NullPiece)
             raise Exception.new("There's no piece to move!")
-        elsif !self[start_pos].moves.include?(end_pos)
+        elsif !self[start_pos].no_check_moves.include?(end_pos)
             raise Exception.new("This piece can't move there!")
         end
         if !self[end_pos].empty?
@@ -32,6 +32,19 @@ class Board
         self[start_pos], self[end_pos] = NullPiece.instance, self[start_pos]
         self[end_pos].position = end_pos
     end
+
+    def move_piece!(start_pos, end_pos)
+        if self[start_pos].is_a?(NullPiece)
+            raise Exception.new("There's no piece to move!")
+        end
+        if !self[end_pos].empty?
+            piece = self[end_pos]
+            @pieces[piece.side].delete(piece)
+        end
+        self[start_pos], self[end_pos] = NullPiece.instance, self[start_pos]
+        self[end_pos].position = end_pos
+    end
+
 
     def in_check?(side)
         king_pos = @king[side].position

@@ -49,7 +49,7 @@ class Piece
 
     def move_into_check?(end_pos)
         new_board = self.board.dup
-        new_board.move_piece(self.position,end_pos)
+        new_board.move_piece!(self.position,end_pos)
         new_board.in_check?(self.side)
     end
 end
