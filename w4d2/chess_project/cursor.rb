@@ -1,26 +1,26 @@
 require "io/console"
 
 KEYMAP = {
-  " " =&gt; :space,
-  "h" =&gt; :left,
-  "j" =&gt; :down,
-  "k" =&gt; :up,
-  "l" =&gt; :right,
-  "w" =&gt; :up,
-  "a" =&gt; :left,
-  "s" =&gt; :down,
-  "d" =&gt; :right,
-  "\t" =&gt; :tab,
-  "\r" =&gt; :return,
-  "\n" =&gt; :newline,
-  "\e" =&gt; :escape,
-  "\e[A" =&gt; :up,
-  "\e[B" =&gt; :down,
-  "\e[C" =&gt; :right,
-  "\e[D" =&gt; :left,
-  "\177" =&gt; :backspace,
-  "\004" =&gt; :delete,
-  "\u0003" =&gt; :ctrl_c,
+  " " => :space,
+  "h" => :left,
+  "j" => :down,
+  "k" => :up,
+  "l" => :right,
+  "w" => :up,
+  "a" => :left,
+  "s" => :down,
+  "d" => :right,
+  "\t" => :tab,
+  "\r" => :return,
+  "\n" => :newline,
+  "\e" => :escape,
+  "\e[A" => :up,
+  "\e[B" => :down,
+  "\e[C" => :right,
+  "\e[D" => :left,
+  "\177" => :backspace,
+  "\004" => :delete,
+  "\u0003" => :ctrl_c,
 }
 
 MOVES = {
@@ -55,10 +55,10 @@ class Cursor
     input = STDIN.getc.chr # STDIN.getc reads a one-character string as a
                              # numeric keycode. chr returns a string of the
                              # character represented by the keycode.
-                             # (e.g. 65.chr =&gt; "A")
+                             # (e.g. 65.chr => "A")
 
     if input == "\e" then
-      input &lt;&lt; STDIN.read_nonblock(3) rescue nil # read_nonblock(maxlen) reads
+      input << STDIN.read_nonblock(3) rescue nil # read_nonblock(maxlen) reads
                                                    # at most maxlen bytes from a
                                                    # data stream; it's nonblocking,
                                                    # meaning the method executes
@@ -66,7 +66,7 @@ class Cursor
                                                    # error if no data is available,
                                                    # hence the need for rescue
 
-      input &lt;&lt; STDIN.read_nonblock(2) rescue nil
+      input << STDIN.read_nonblock(2) rescue nil
     end
 
     STDIN.echo = true # the console prints return values again
@@ -90,5 +90,9 @@ class Cursor
   def update_pos(diff)
     @cursor_pos = [cursor_pos[0] + diff[0], cursor_pos[1] + diff[1]].map {|a| a.clamp(0,7)}
     return nil
+  end
+
+  def inspect
+    self.cursor_pos
   end
 end

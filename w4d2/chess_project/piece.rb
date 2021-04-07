@@ -28,6 +28,17 @@ class Piece
         true
     end
 
+    def to_s
+        self.sym.to_s
+    end
+
+    def sym
+        raise Exception.new("Uninitialized symbol")
+    end
+
+    def inspect
+        sym
+    end
 end
 
 module Stepable
@@ -76,7 +87,7 @@ class Knight < Piece
         [[2,1],[1,2],[2,-1],[1,-2],[-1,2],[1,-2],[-1,-2],[-2,-1]]
     end
 
-    def inspect
+    def sym
         :N
     end
 end
@@ -87,7 +98,7 @@ class King < Piece
         [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]]
     end
 
-    def inspect
+    def sym
         :K
     end
 end
@@ -98,7 +109,7 @@ class Rook < Piece
         HORIZONTAL_DIRS
     end
 
-    def inspect
+    def sym
         :R
     end
 end
@@ -109,7 +120,7 @@ class Bishop < Piece
         DIAGONAL_DIRS
     end
 
-    def inspect
+    def sym
         :B
     end
 end
@@ -120,7 +131,7 @@ class Queen < Piece
         HORIZONTAL_DIRS + DIAGONAL_DIRS
     end
 
-    def inspect
+    def sym
         :Q
     end
 end
@@ -163,7 +174,7 @@ class Pawn < Piece
         self.moved ? [[r, -1], [r, 0], [r, 1]] : [[r, -1], [r, 0], [r, 1], [2*r, 0]]
     end
 
-    def inspect
+    def sym
         :p
     end
 end
@@ -178,7 +189,11 @@ class NullPiece < Piece
         return true
     end
 
-    def inspect
+    def to_s
+        " "
+    end
+
+    def sym
         :_
     end
 end
