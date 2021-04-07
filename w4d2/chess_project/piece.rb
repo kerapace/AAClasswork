@@ -1,6 +1,8 @@
 require_relative 'board.rb'
 require 'singleton'
 
+# implement move_piece(end_pos)
+
 class Piece
     attr_accessor :position
     attr_reader :side, :board
@@ -57,8 +59,8 @@ module Slideable
         move_dirs.each do |row,col|
             (1..7).each do |i|
                 poss_pos = [curr_row + i * row, curr_col + i * col]
-                break if poss_pos[0] < 0 || poss_pos[0] >= 8 || poss_pos[1] < 0 || poss_pos[1] >= 8
-                poss_moves << poss_pos if self.valid_move?(poss_pos)
+                break if !self.valid_move?(poss_pos)
+                poss_moves << poss_pos
                 if !self.board[poss_pos].empty?
                     break
                 end
@@ -66,7 +68,6 @@ module Slideable
         end
         poss_moves
     end
-
 end
 
 class Knight < Piece
@@ -136,6 +137,7 @@ class Pawn < Piece
             return !self.board[pos].empty? && self.side != self.board[pos].side
         end
     end
+
     def move_diffs
         pawn_movement_dir = {black: -1, white: 1}
         r = pawn_movement_dir[self.side]
@@ -149,8 +151,10 @@ end
 
 class NullPiece < Piece
     include Singleton
+
     def initialize
     end
+
     def empty?
         return true
     end
