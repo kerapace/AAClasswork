@@ -134,6 +134,11 @@ class Pawn < Piece
         super
     end
 
+    def position=(pos)
+        @position = pos
+        @moved = true
+    end
+
     def valid_move?(pos)
         row, col = pos
         curr_row, curr_col = self.position

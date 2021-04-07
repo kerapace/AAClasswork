@@ -28,7 +28,28 @@ class Board
 
     private
     def set_up_board
+        set_up_side(:white)
+        set_up_side(:black)
+    end
 
+    def set_up_side(side)
+        f, s = side == :white ? [0,1] : [7,6]
+        (0..7).each do |j|
+            self[[s,j]] = Pawn.new(side,self,[s,j])
+        end
+        (0..7).each do |j|
+            if j == 0 || j == 7
+                self[[f,j]] = Rook.new(side,self,[f,j])
+            elsif j == 1 || j == 6
+                self[[f,j]] = Knight.new(side,self,[f,j])
+            elsif j == 2 || j == 5
+                self[[f,j]] = Bishop.new(side,self,[f,j])
+            elsif j == 3
+                self[[f,j]] = Queen.new(side,self,[f,j])
+            else
+                self[[f,j]] = King.new(side,self,[f,j])
+            end
+        end
     end
 end
 
