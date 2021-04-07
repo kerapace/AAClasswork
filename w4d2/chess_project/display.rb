@@ -1,6 +1,7 @@
 require_relative 'cursor'
 require_relative 'board'
 require 'paint'
+require 'byebug'
 
 class Display
     def initialize(board)
@@ -33,3 +34,13 @@ class Display
         puts board_display
     end
 end
+
+b = Board.new
+d = Display.new(b)
+b.move_piece([1,5],[2,5])
+b.move_piece([6,4],[4,4])
+d.render
+b.move_piece([1,6],[3,6])
+b.move_piece([7,3],[3,7])
+d.render
+p b.checkmate?(:white)

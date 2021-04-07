@@ -1,7 +1,6 @@
 require_relative 'board.rb'
 require 'singleton'
-
-# implement move_piece(end_pos)
+require 'byebug'
 
 class Piece
     attr_accessor :position
@@ -15,6 +14,10 @@ class Piece
 
     def empty?
         return false
+    end
+
+    def no_check_moves
+        self.moves.select{|move| !self.move_into_check?(move)}
     end
 
     def valid_move?(pos)
@@ -44,7 +47,10 @@ class Piece
         []
     end
 
-    def move_into_check?
+    def move_into_check?(end_pos)
+        new_board = self.board.dup
+        new_board.move_piece(self.position,end_pos)
+        new_board.in_check?(self.side)
     end
 end
 
@@ -161,6 +167,9 @@ class Pawn < Piece
         row, col = pos
         curr_row, curr_col = self.position
         return false unless row >= 0 && row < 8 && col >= 0 && col < 8
+        # if self.move_into_check?(pos)
+        #     return false
+        # end
         if col - curr_col == 0
             if (curr_row - row).abs == 2
                 return self.board[pos].empty? && self.board[[curr_row + forward_dir, col]].empty?

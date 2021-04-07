@@ -22,7 +22,7 @@ class Board
     def move_piece(start_pos, end_pos)
         if self[start_pos].is_a?(NullPiece)
             raise Exception.new("There's no piece to move!")
-        elsif !self[start_pos].valid_move?(end_pos)
+        elsif !self[start_pos].moves.include?(end_pos)
             raise Exception.new("This piece can't move there!")
         end
         if !self[end_pos].empty?
@@ -40,29 +40,11 @@ class Board
     end
 
     def checkmate?(side)
-        other_side = side == :white ? :black : :white
-        in_check(side) && @pieces[other_side].none? {|piece| piece.check_moves.empty?}
+        in_check?(side) && @pieces[side].all? {|piece| piece.no_check_moves.empty?}
     end
 
-    def try_move(start_pos, end_pos)
-        check_side = self[start_pos].side
-        if self[start_pos].is_a?(NullPiece)
-            raise Exception.new("There's no piece to move!")
-        elsif !self[start_pos].valid_move?(end_pos)
-            raise Exception.new("This piece can't move there!")
-        end
-        temp = self[end_pos]
-        if !self[end_pos].empty?
-            piece = self[end_pos]
-            @pieces[piece.side].delete(piece)
-        end
-        self[start_pos], self[end_pos] = NullPiece.instance, self[start_pos]
-        self[end_pos].position = end_pos
-        check_val = in_check?(check_side)
-        @pieces[temp.side] << temp
-        self[start_pos], self[end_pos] = self[end_pos], temp
-        self[start_pos].position = start_pos
-        check_val
+    def dup
+        Marshal.load(Marshal.dump self)
     end
 
     private
