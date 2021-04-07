@@ -35,6 +35,34 @@ class Board
 
     def in_check?(side)
         king_pos = @king[side].position
+        other_side = side == :white ? :black : :white
+        @pieces[other_side].any? {|piece| piece.moves.include?(king_pos)}
+    end
+
+    def checkmate?(side)
+        other_side = side == :white ? :black : :white
+        in_check(side) && @pieces[other_side].none? {|piece| piece.check_moves.empty?}
+    end
+
+    def try_move(start_pos, end_pos)
+        check_side = self[start_pos].side
+        if self[start_pos].is_a?(NullPiece)
+            raise Exception.new("There's no piece to move!")
+        elsif !self[start_pos].valid_move?(end_pos)
+            raise Exception.new("This piece can't move there!")
+        end
+        temp = self[end_pos]
+        if !self[end_pos].empty?
+            piece = self[end_pos]
+            @pieces[piece.side].delete(piece)
+        end
+        self[start_pos], self[end_pos] = NullPiece.instance, self[start_pos]
+        self[end_pos].position = end_pos
+        check_val = in_check?(check_side)
+        @pieces[temp.side] << temp
+        self[start_pos], self[end_pos] = self[end_pos], temp
+        self[start_pos].position = start_pos
+        check_val
     end
 
     private
