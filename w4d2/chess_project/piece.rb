@@ -167,9 +167,6 @@ class Pawn < Piece
         row, col = pos
         curr_row, curr_col = self.position
         return false unless row >= 0 && row < 8 && col >= 0 && col < 8
-        # if self.move_into_check?(pos)
-        #     return false
-        # end
         if col - curr_col == 0
             if (curr_row - row).abs == 2
                 return self.board[pos].empty? && self.board[[curr_row + forward_dir, col]].empty?

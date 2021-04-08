@@ -1,6 +1,7 @@
 require_relative "board"
 require_relative "display"
 require_relative "player"
+
 class Game
     def initialize
         @board = Board.new
@@ -21,7 +22,7 @@ class Game
                 raise Exception.new("Only move your own pieces, thanks!")
             end
             @board.move_piece(initial_position,final_position)
-        rescue Exception => e
+        rescue StandardError => e
             puts e.message
             retry
         end
@@ -29,7 +30,7 @@ class Game
         @display.render
             
     end
-    
+
     def play
         white_mate, black_mate = false, false
         while !white_mate && !black_mate
