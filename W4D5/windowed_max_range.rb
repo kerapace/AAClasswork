@@ -1,19 +1,14 @@
-def windowed_max_range(arr, window_length)
-    curr_max_range = nil
-    arr[0..arr.length-window_length].each_with_index do |ele, i|
-        window = arr[i...i+window_length]
-        range = window.max - window.min
-        if curr_max_range.nil? || range > curr_max_range
-            curr_max_range = range
-        end
-    end
-    curr_max_range
-end
-
-p windowed_max_range([1, 0, 2, 5, 4, 8], 2) #== 4 # 4, 8
-p windowed_max_range([1, 0, 2, 5, 4, 8], 3) #== 5 # 0, 2, 5
-p windowed_max_range([1, 0, 2, 5, 4, 8], 4) #== 6 # 2, 5, 4, 8
-p windowed_max_range([1, 3, 2, 5, 4, 8], 5) #== 6 # 3, 2, 5, 4, 8
+# def windowed_max_range(arr, window_length)
+#     curr_max_range = nil
+#     arr[0..arr.length-window_length].each_with_index do |ele, i|
+#         window = arr[i...i+window_length]
+#         range = window.max - window.min
+#         if curr_max_range.nil? || range > curr_max_range
+#             curr_max_range = range
+#         end
+#     end
+#     curr_max_range
+# end
 
 class MyStack
     def initialize
@@ -175,3 +170,61 @@ p minmax.max
 minmax.pop
 p minmax.max
 
+class MinMaxStackQueue
+    def initialize
+        @stack1 = MinMaxStack.new
+        @stack2 = MinMaxStack.new
+    end
+
+    def enqueue(ele)
+        @stack2.push(ele)
+        nil
+    end
+
+    def dequeue
+        if !@stack1.empty?
+            @stack1.pop
+        else
+            until @stack2.empty?
+                @stack1.push(@stack2.pop)
+            end
+            @stack1.pop
+        end
+    end
+
+    def empty?
+        @stack1.empty? && @stack2.empty?
+    end
+
+    def peek
+        @stack1.empty? ? @stack2[0] : @stack1[-1]
+    end
+
+    def min
+        [@stack1.min, @stack2.min].min
+    end
+
+    def max
+        [@stack1.max, @stack2.max].max
+    end
+end
+
+def windowed_max_range(arr, window_length)
+    curr_max_range = nil
+    window = MinMaxStackQueue.new
+    (0...window_length-1).each {|i| window.enqueue(arr[i])}
+    (window_length-1...arr.length).each do |i|
+        window.enqueue(arr[i])
+        range = window.max - window.min
+        if curr_max_range.nil? || range > curr_max_range
+            curr_max_range = range
+        end
+        window.dequeue
+    end
+    curr_max_range
+end
+
+p windowed_max_range([1, 0, 2, 5, 4, 8], 2) #== 4 # 4, 8
+p windowed_max_range([1, 0, 2, 5, 4, 8], 3) #== 5 # 0, 2, 5
+p windowed_max_range([1, 0, 2, 5, 4, 8], 4) #== 6 # 2, 5, 4, 8
+p windowed_max_range([1, 3, 2, 5, 4, 8], 5) #== 6 # 3, 2, 5, 4, 8
