@@ -94,16 +94,84 @@ class StackQueue
     end
 end
 
-sq = StackQueue.new
-sq.enqueue(1)
-sq.enqueue(2)
-sq.enqueue(3)
-sq.enqueue(4)
-sq.enqueue(5)
+# sq = StackQueue.new
+# sq.enqueue(1)
+# sq.enqueue(2)
+# sq.enqueue(3)
+# sq.enqueue(4)
+# sq.enqueue(5)
 
-p sq.dequeue
-p sq.dequeue
-p sq.dequeue
-p sq.dequeue
-p sq.dequeue
+# p sq.dequeue
+# p sq.dequeue
+# p sq.dequeue
+# p sq.dequeue
+# p sq.dequeue
+
+class MinMaxStack
+    def initialize
+        @stack = []
+        @max = -Float::INFINITY
+        @min = Float::INFINITY
+        @hash_max = Hash.new()
+        @incidences = Hash.new(0)
+        @hash_min = Hash.new()
+    end
+
+    def push(ele)
+        @stack << ele
+        @incidences[ele] += 1
+        if ele > @max
+            @hash_max[ele] = @max
+            @max = ele 
+        end
+        if ele < @min
+            @hash_min[ele] = @min
+            @min = ele
+        end
+    end
+
+
+    #[3,4,5,4,6,7}
+    # { 3: nil, 4: 3, 5: 4, 7: 5, 6: 5}
+
+    def pop
+        if @stack.last == @max && @incidences[@max] == 1
+            @max = @hash_max[@max]
+        end
+        if @stack.last == @min && @incidences[@min] == 1
+            @min = @hash_min[@min]
+        end
+        @incidences[@stack.last] -= 1
+        @stack.pop
+    end
+
+    def max
+        @max
+    end
+
+    def min
+        @min
+    end
+
+    def peek
+        @stack[-1]
+    end
+
+    def empty?
+        @stack.length == 0
+    end
+end
+
+minmax = MinMaxStack.new
+minmax.push(3)
+minmax.push(4)
+minmax.push(5)
+minmax.push(2)
+minmax.push(7)
+minmax.push(7)
+p minmax.max
+minmax.pop
+p minmax.max
+minmax.pop
+p minmax.max
 
