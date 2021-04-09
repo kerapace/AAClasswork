@@ -19,12 +19,12 @@ class Game
         begin
             initial_position, final_position = @curr_player.get_input
             if @board[initial_position].side != @curr_player.side
-                raise Exception.new("Only move your own pieces, thanks!")
+                raise StandardError.new("Only move your own pieces, thanks!")
             end
             @board.move_piece(initial_position,final_position)
-        rescue StandardError => e
-            puts e.message
-            retry
+        # rescue StandardError => e
+        #     puts e.message
+        #     retry
         end
         system("clear")
         @display.render
@@ -33,6 +33,8 @@ class Game
 
     def play
         white_mate, black_mate = false, false
+        system("clear")
+        @display.render
         while !white_mate && !black_mate
             self.take_turn
             self.next_player

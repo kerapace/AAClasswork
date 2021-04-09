@@ -8,8 +8,8 @@ class Player
 
     def get_input
         init_loc, final_loc = nil, nil
-        system("clear")
-        @display.render
+        # system("clear")
+        # @display.render
         while init_loc.nil? || final_loc.nil?
             val = cursor.get_input
             if init_loc.nil?

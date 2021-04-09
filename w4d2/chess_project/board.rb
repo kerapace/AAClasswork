@@ -2,11 +2,13 @@ require_relative 'piece'
 
 class Board
     attr_reader :king, :pieces
-    def initialize
+    def initialize(setup = true)
         @grid = Array.new(8) {Array.new(8,NullPiece.instance)}
         @king = {}
         @pieces = {white: [], black: []}
-        set_up_board
+        if setup
+            set_up_board
+        end
     end
 
     def [](pos)
@@ -21,9 +23,9 @@ class Board
 
     def move_piece(start_pos, end_pos)
         if self[start_pos].is_a?(NullPiece)
-            raise Exception.new("There's no piece to move!")
+            raise StandardError.new("There's no piece to move!")
         elsif !self[start_pos].no_check_moves.include?(end_pos)
-            raise Exception.new("This piece can't move there!")
+            raise StandardError.new("This piece can't move there!")
         end
         if !self[end_pos].empty?
             piece = self[end_pos]
@@ -35,7 +37,7 @@ class Board
 
     def move_piece!(start_pos, end_pos)
         if self[start_pos].is_a?(NullPiece)
-            raise Exception.new("There's no piece to move!")
+            raise StandardError.new("There's no piece to move!")
         end
         if !self[end_pos].empty?
             piece = self[end_pos]
@@ -57,7 +59,15 @@ class Board
     end
 
     def dup
-        Marshal.load(Marshal.dump self)
+        b_new = Board.new(false)
+        self.pieces.each do |side,piece_arr|
+            piece_arr.each do |piece|
+                b_new[piece.position] = piece.class.new(side,b_new,piece.position.dup)
+                b_new.pieces[side] << piece
+                b_new.king[side] = piece if piece.is_a?(King)
+            end
+        end
+        b_new
     end
 
     private

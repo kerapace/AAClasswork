@@ -25,9 +25,9 @@ class Display
                 elsif poss_moves.include?([i,j])
                     board_display += Paint[piece.to_s, piece.side, [139,247,250]]
                 elsif (i + j) % 2 == 0
-                    board_display += Paint[piece.to_s, piece.side, [254,242,141]]
+                    board_display += Paint[piece.to_s, piece.side, [119,119,119]]
                 else
-                    board_display += Paint[piece.to_s, piece.side, [199,159,3]]
+                    board_display += Paint[piece.to_s, piece.side, [170,170,170]]
                 end
             end
             board_display += "\n"
