@@ -23,19 +23,41 @@ end
 
 unsorted_arr = (0...1000).to_a.shuffle
 
-p my_min(unsorted_arr)
+# p my_min(unsorted_arr)
+
+# def largest_contiguous_subsum(arr)
+#     sum = 0
+#     subarr = []
+#     (0...arr.length).each do |i|
+#         (i...arr.length).each do |j|
+#             subarr << arr[i..j]
+#         end
+#     end
+#     subarr.map(&:sum).max
+# end
+=begin
+[8,7,-20,4,3,13]
+
+=end
+
 
 def largest_contiguous_subsum(arr)
     sum = 0
-    subarr = []
+    max_sum = -Float::INFINITY
+    # first_index = 0
+    # last_index = 0
     (0...arr.length).each do |i|
-        (i...arr.length).each do |j|
-            subarr << arr[i..j]
+        sum += arr[i] 
+        if max_sum < sum
+            max_sum = sum
         end
+        sum = 0 if sum < 0 
     end
-    subarr.map(&:sum).max
+    max_sum
 end
 
 num_arr = [5,3,-7]
 
-p largest_contiguous_subsum(num_arr)
+p largest_contiguous_subsum([5,3,-7])
+p largest_contiguous_subsum([8,7,-20,4,3,13])
+p largest_contiguous_subsum([-5,-1,-3])
