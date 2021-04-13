@@ -22,9 +22,9 @@ class Game
                 raise StandardError.new("Only move your own pieces, thanks!")
             end
             @board.move_piece(initial_position,final_position)
-        # rescue StandardError => e
-        #     puts e.message
-        #     retry
+        rescue StandardError => e
+            puts e.message
+            retry
         end
         system("clear")
         @display.render

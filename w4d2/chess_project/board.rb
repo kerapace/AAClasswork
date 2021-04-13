@@ -59,15 +59,16 @@ class Board
     end
 
     def dup
-        b_new = Board.new(false)
-        self.pieces.each do |side,piece_arr|
-            piece_arr.each do |piece|
-                b_new[piece.position] = piece.class.new(side,b_new,piece.position.dup)
-                b_new.pieces[side] << piece
-                b_new.king[side] = piece if piece.is_a?(King)
-            end
-        end
-        b_new
+        # b_new = Board.new(false)
+        # self.pieces.each do |side,piece_arr|
+        #     piece_arr.each do |piece|
+        #         b_new[piece.position] = piece.class.new(side,b_new,piece.position.dup)
+        #         b_new.pieces[side] << piece
+        #         b_new.king[side] = piece if piece.is_a?(King)
+        #     end
+        # end
+        # b_new
+        Marshal.load (Marshal.dump self)
     end
 
     private
