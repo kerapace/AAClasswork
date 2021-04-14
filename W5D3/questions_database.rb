@@ -43,7 +43,7 @@ class User
     end 
 
     def self.find_by_id(id)
-        if id < 1 raise "invalid id"
+        raise "invalid id" if id < 1
         query_result = QuestionsDatabase.instance.execute(<<-SQL,id)
         SELECT
             *
@@ -100,7 +100,7 @@ class Question
     end 
 
     def self.find_by_id(id)
-        if id < 1 raise "invalid id"
+        raise "invalid id" if id < 1
         query_result = QuestionsDatabase.instance.execute(<<-SQL,id)
         SELECT
             *
@@ -109,7 +109,7 @@ class Question
         WHERE
             id = ?
         SQL
-        query_result.map {|q| Questions.new(q)}[0]
+        query_result.map {|q| Question.new(q)}[0]
     end
 
     def self.find_by_title(title)
@@ -157,7 +157,7 @@ class Reply
     end 
 
     def self.find_by_id(id)
-        if id < 1 raise "invalid id"
+        raise "invalid id" if id < 1
         query_result = QuestionsDatabase.instance.execute(<<-SQL,id)
         SELECT
             *
