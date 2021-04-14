@@ -181,3 +181,63 @@ class Reply
         query_result.map {|r| Reply.new(r)}
     end
 end
+
+class QuestionFollow
+
+    attr_accessor :id, :u_id, :q_id
+    def initialize(options)
+        @id = options['id']
+        @q_id = options['q_id']
+        @u_id = options['u_id']
+    end
+
+    def create
+        raise "#{self} already in database" if self.id
+        QuestionsDatabase.instance.execute(<<-SQL, self.q_id, self.u_id)
+        INSERT INTO
+        question_follows(q_id,u_id)
+        VALUES (?, ?)
+        SQL
+        self.id=QuestionsDatabase.instance.last_insert_row_id
+    end 
+
+    def update
+        raise "#{self} not in database" unless self.id
+        QuestionsDatabase.instance.execute(<<-SQL, self.q_id, self.u_id)
+        UPDATE
+            question_follows
+        SET
+            q_id = ?, u_id = ?
+        WHERE
+            id = ?
+        SQL
+    end 
+
+    def self.find_by_id(id)
+        raise "invalid id" if id < 1
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,id)
+        SELECT
+            *
+        FROM
+            question_follows
+        WHERE
+            id = ?
+        SQL
+        query_result.map {|qf| QuestionFollow.new(qf)}[0]
+    end
+
+    def self.followers_for_question_id(q_id)
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,q_id)
+        SELECT
+           users.id, users.f_name, users.l_name
+        FROM
+            question_follows
+        JOIN
+            users ON question_follows.u_id = users.id
+        WHERE
+            q_id = ?
+        SQL
+        query_result.map {|r| User.new(r)}
+    end
+
+end
