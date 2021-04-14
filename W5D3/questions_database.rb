@@ -38,14 +38,146 @@ class User
         SET
             f_name = ?, l_name = ?
         WHERE
-            id =?
+            id = ?
         SQL
     end 
 
     def self.find_by_id(id)
-        QuestionsDatabase.instance.execute 
-
+        if id < 1 raise "invalid id"
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,id)
+        SELECT
+            *
+        FROM
+            users
+        WHERE
+            id = ?
+        SQL
+        query_result.map {|user| User.new(user)}[0]
     end
 
+    def self.find_by_name(f_name,l_name)
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,f_name, l_name)
+        SELECT
+            *
+        FROM
+            users
+        WHERE
+            f_name = ? AND l_name = ?
+        SQL
+        query_result.map {|user| User.new(user)}
+    end
 end
 
+class Question
+    attr_accessor :id, :title, :body, :u_id
+    def initialize(options)
+        @id = options['id']
+        @title = options['title']
+        @body = options['body']
+        @u_id = options['u_id']
+    end
+
+    def create
+        raise "#{self} already in database" if self.id
+        QuestionsDatabase.instance.execute(<<-SQL, self.title, self.body, self.u_id)
+        INSERT INTO
+        questions (title, body, u_id)
+        VALUES (?, ?, ?)
+        SQL
+        self.id=QuestionsDatabase.instance.last_insert_row_id
+    end 
+
+    def update
+        raise "#{self} not in database" unless self.id
+        QuestionsDatabase.instance.execute(<<-SQL, self.title, self.body ,self.u_id)
+        UPDATE
+            questions
+        SET
+            title = ?, body = ?, u_id = ? 
+        WHERE
+            id = ?
+        SQL
+    end 
+
+    def self.find_by_id(id)
+        if id < 1 raise "invalid id"
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,id)
+        SELECT
+            *
+        FROM
+            questions
+        WHERE
+            id = ?
+        SQL
+        query_result.map {|q| Questions.new(q)}[0]
+    end
+
+    def self.find_by_title(title)
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,title)
+        SELECT
+            *
+        FROM
+            questions
+        WHERE
+            title
+        SQL
+        query_result.map {|q| Question.new(q)}
+    end
+end
+
+class Reply
+    attr_accessor :id, :q_id, :p_reply_id, :body
+    def initialize(options)
+        @id = options['id']
+        @q_id = options['q_id']
+        @p_reply_id = options['p_reply_id']
+        @body = options['body']
+    end
+
+    def create
+        raise "#{self} already in database" if self.id
+        QuestionsDatabase.instance.execute(<<-SQL, self.q_id, self.p_reply_id, self.body)
+        INSERT INTO
+        replies (q_id, p_reply_id, body)
+        VALUES (?, ?, ?)
+        SQL
+        self.id=QuestionsDatabase.instance.last_insert_row_id
+    end 
+
+    def update
+        raise "#{self} not in database" unless self.id
+        QuestionsDatabase.instance.execute(<<-SQL, self.q_id, self.p_reply_id, self.body)
+        UPDATE
+            replies
+        SET
+            q_id = ?, p_reply_id = ?, body = ? 
+        WHERE
+            id = ?
+        SQL
+    end 
+
+    def self.find_by_id(id)
+        if id < 1 raise "invalid id"
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,id)
+        SELECT
+            *
+        FROM
+            replies
+        WHERE
+            id = ?
+        SQL
+        query_result.map {|r| Reply.new(r)}[0]
+    end
+
+    def self.find_all_replies(q_id)
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,q_id)
+        SELECT
+            *
+        FROM
+            replies
+        WHERE
+            q_id = ?
+        SQL
+        query_result.map {|r| Reply.new(r)}
+    end
+end

@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS users;
 
-
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE users(
