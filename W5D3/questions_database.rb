@@ -240,4 +240,17 @@ class QuestionFollow
         query_result.map {|r| User.new(r)}
     end
 
+    def self.most_followed_question(n = 1)
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,n)
+        SELECT
+            questions.id, questions.title, questions.body, questions.u_id
+        FROM
+            questions
+        JOIN question_follows ON questions.id = question_follows.q_id
+        GROUP BY questions.id
+        ORDER BY COUNT(*) DESC
+        LIMIT ?
+        SQL
+        query_result.map {|r| Question.new(r)}
+    end
 end
