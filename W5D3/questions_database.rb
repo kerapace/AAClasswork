@@ -66,6 +66,23 @@ class User
         SQL
         query_result.map {|user| User.new(user)}
     end
+
+    def average_karma
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,self.id)
+        SELECT
+            count(*)
+        FROM
+            (SELECT 
+                *
+            FROM
+              question_likes
+            WHERE
+                u_id = self.id
+            ) AS users_likes
+        GROUP BY 
+                q_id
+        SQL  
+    end 
 end
 
 class Question
@@ -253,4 +270,50 @@ class QuestionFollow
         SQL
         query_result.map {|r| Question.new(r)}
     end
+
+end
+
+class QuestionLike
+  attr_accessor :id, :u_id, :q_id
+    def initialize(options)
+        @id = options['id']
+        @q_id = options['q_id']
+        @u_id = options['u_id']
+    end
+
+    def create
+        raise "#{self} already in database" if self.id
+        QuestionsDatabase.instance.execute(<<-SQL, self.q_id, self.u_id)
+        INSERT INTO
+        question_follows(q_id,u_id)
+        VALUES (?, ?)
+        SQL
+        self.id=QuestionsDatabase.instance.last_insert_row_id
+    end 
+
+    def update
+        raise "#{self} not in database" unless self.id
+        QuestionsDatabase.instance.execute(<<-SQL, self.q_id, self.u_id)
+        UPDATE
+            question_follows
+        SET
+            q_id = ?, u_id = ?
+        WHERE
+            id = ?
+        SQL
+    end 
+
+    def self.find_by_id(id)
+        raise "invalid id" if id < 1
+        query_result = QuestionsDatabase.instance.execute(<<-SQL,id)
+        SELECT
+            *
+        FROM
+            question_follows
+        WHERE
+            id = ?
+        SQL
+        query_result.map {|qf| QuestionLike.new(qf)}[0]
+    end
+    
 end
