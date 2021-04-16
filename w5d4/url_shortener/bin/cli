@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+require_relative "../app/models/user"
+require_relative "../app/models/shortened_url"
+require "launchy"
+
+
+
+quit = false
+while !quit
+    puts "Please enter your e-mail"
+    email = gets.chomp
+    #if email ~= %r{\S+@\S+.\S+}
+    user = User.where(email: email).first
+    next if user.nil?
+    puts "Do you want to create or visit a shortened URL?"
+    info = gets.chomp
+    case info
+    when "create"
+        puts "What URL do you want to shorten?"
+        url = gets.chomp
+        shortened_url = ShortenedUrl.create!(user, url)
+        Launchy.open(shortened_url.short_url)
+    when "visit"
+        puts "Here are the list of shortened urls:"
+        puts ShortenedUrl.all.map { |url| url.short_url }
+        puts "Which url would you like to visit?"
+        url = gets.chomp
+        Visit.record_visit!(user, url)
+        Launchy.open(url)
+    when "quit"
+        quit = true
+    end
+end
