@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
     def index
         render plain: "I'm in the index action!"
+        
     end
 
     def create
@@ -9,6 +10,8 @@ class UsersController < ApplicationController
     end
 
     def show
-        render body: raw
+        user = User.find_by(id: params[:id])
+        render json: user
+    
     end
 end
