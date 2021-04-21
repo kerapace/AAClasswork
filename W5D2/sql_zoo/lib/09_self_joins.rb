@@ -50,23 +50,7 @@ def lrt_stops
 end
 
 def connecting_routes
-  # Consider the following query:
-  #
-  # SELECT
-  #   company,
-  #   num,
-  #   COUNT(*)
-  # FROM
-  #   routes
-  # WHERE
-  #   stop_id = 149 OR stop_id = 53
-  # GROUP BY
-  #   company, num
-  #
-  # The query gives the number of routes that visit either London Road
-  # (149) or Craiglockhart (53). Run the query and notice the two services
-  # that link these stops have a count of 2. Add a HAVING clause to restrict
-  # the output to these two routes.
+  
   execute(<<-SQL)
   SQL
 end

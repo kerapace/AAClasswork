@@ -70,18 +70,18 @@ class User
     def average_karma
         query_result = QuestionsDatabase.instance.execute(<<-SQL,self.id)
         SELECT
-            count(*)
+            COUNT(*)
         FROM
             (SELECT 
                 *
             FROM
               question_likes
             WHERE
-                u_id = self.id
+                u_id = ?
             ) AS users_likes
         GROUP BY 
                 q_id
-        SQL  
+        SQL
     end 
 end
 
