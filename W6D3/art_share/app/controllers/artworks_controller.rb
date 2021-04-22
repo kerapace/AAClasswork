@@ -1,10 +1,7 @@
 class ArtworksController < ApplicationController
     def index
-        artwork = Artwork.all
-        render json: artwork
-        # render plain: "I'm in the index action!"
-
-        
+        user = User.find_by(id: params[:user_id])
+        render json: user.created_artworks + user.shared_artworks 
     end
 
     def create
@@ -34,7 +31,7 @@ class ArtworksController < ApplicationController
    def destroy
         artwork =  Artwork.find_by(id: params[:id])
         if artwork.destroy
-            redirect_to "/artworks"
+            render json: artwork
         else
             render json: artwork.errors.full_messages, status: 422
         end
