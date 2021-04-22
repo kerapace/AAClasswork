@@ -1,5 +1,5 @@
 class ArtworkShare < ApplicationRecord
-    validate :artwork_id, :viewer_id, presence: true
+    validates :artwork_id, :viewer_id, presence: true
     validates :artwork_id, :viewer_id, uniqueness: true
 
     belongs_to :artwork,
