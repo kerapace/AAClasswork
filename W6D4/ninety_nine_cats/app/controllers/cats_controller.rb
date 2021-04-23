@@ -10,8 +10,11 @@ class CatsController < ApplicationController
   end
 
   def new
+    @colors = Cat::COLORS
     render :new
   end
+
+  # <% Cat.COLORS %> 
 
   private
   def cat_params
