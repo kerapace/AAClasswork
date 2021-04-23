@@ -4,11 +4,23 @@
 <body>
 <table>
     <tr>
-        <th>Name</th><th>Age</th><th>Color</th><th>Sex</th><th>Description</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Color</th>
+        <th>Sex</th>
+        <th>Description</th>
     </tr>
     <tr>
-        <td><%=@cat.name%></td><td><%=@cat.age%></td><td><%=@cat.color%></td><td><%=@cat.sex %></td><td><%= @cat.description%></td>
+        <td><%=@cat.name%></td>
+        <td><%=@cat.age%></td>
+        <td><%=@cat.color%></td>
+        <td><%=@cat.sex %></td>
+        <td><%= @cat.description%></td>
     </tr>
 </table>
+<form action="<%= cat_url(@cat) %>" method="post">
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" value="GET RID OF BUT NOT HURT THIS CAT">
+</form>
 </body>
 </html>
