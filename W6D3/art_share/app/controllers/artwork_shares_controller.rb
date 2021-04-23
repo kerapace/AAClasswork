@@ -2,8 +2,8 @@ class ArtworkSharesController < ApplicationController
 
 
     def create
-        if ArtworkShare.find_by(artist_id: params[:artist_id], viewer_id: params[:viewer_id]).nil?
-            share = ArtworkShare.new(params.require(:artwork_share).permit(:artist_id, :viewer_id))
+        if ArtworkShare.find_by(params.require(:artwork_share).permit(:artwork_id, :viewer_id)).nil?
+            share = ArtworkShare.new(params.require(:artwork_share).permit(:artwork_id, :viewer_id))
             if share.save
                 render json: share
             else
@@ -13,8 +13,8 @@ class ArtworkSharesController < ApplicationController
     end
 
     def destroy
-        if !ArtworkShare.find_by(artist_id: params[:artist_id], viewer_id: params[:viewer_id]).nil?
-            share = ArtworkShare.new(params.require(:artwork_share).permit(:artist_id, :viewer_id))
+        share = ArtworkShare.find_by(params.require(:artwork_share).permit(:artwork_id, :viewer_id))
+        if !share.nil?
             if share.destroy
                 render json: share
             else

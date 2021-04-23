@@ -1,7 +1,7 @@
 class ArtworksController < ApplicationController
     def index
         user = User.find_by(id: params[:user_id])
-        render json: user.created_artworks + user.shared_artworks 
+        render json: (user.created_artworks + user.shared_artworks).uniq
     end
 
     def create
