@@ -488,3 +488,125 @@ Processing by CatsController#index as HTML
 Completed 200 OK in 33ms (Views: 32.5ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/cats" for ::1 at 2021-04-23 19:13:29 -0400
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kerapace/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (4.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:5
+  Rendered cats/index.html.erb within layouts/application (49.6ms)
+Completed 200 OK in 415ms (Views: 376.8ms | ActiveRecord: 20.6ms)
+
+
+Started GET "/cats/1/edit" for ::1 at 2021-04-23 19:13:35 -0400
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (378.7ms)
+Completed 500 Internal Server Error in 385ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `cat' for #<#<Class:0x0000556fb0391730>:0x00007f27813b92c8>
+Did you mean?  catch:
+  app/views/cats/edit.html.erb:5:in `_app_views_cats_edit_html_erb__3261533986271720249_69903824311480'
+
+Started POST "/__better_errors/8cbe8ff56069bbc8/variables" for ::1 at 2021-04-23 19:13:36 -0400
+Started GET "/cats/1/edit" for ::1 at 2021-04-23 19:14:15 -0400
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (7.6ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `name' for nil:NilClass:
+  app/views/cats/edit.html.erb:5:in `_app_views_cats_edit_html_erb__3261533986271720249_69903830796800'
+
+Started POST "/__better_errors/ab38cb66dfc87dab/variables" for ::1 at 2021-04-23 19:14:15 -0400
+Started GET "/cats/" for ::1 at 2021-04-23 19:14:37 -0400
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:5
+  Rendered cats/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 77ms (Views: 72.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/cats/1" for ::1 at 2021-04-23 19:14:39 -0400
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (3.7ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:8
+  Rendering cats/show.html.erb within layouts/application
+  Rendered cats/show.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 55ms (Views: 29.3ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/cats/1/edit" for ::1 at 2021-04-23 19:14:42 -0400
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (10.4ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `name' for nil:NilClass:
+  app/views/cats/edit.html.erb:5:in `_app_views_cats_edit_html_erb__3261533986271720249_69903826118780'
+
+Started POST "/__better_errors/6e7edad1e7b64153/variables" for ::1 at 2021-04-23 19:14:43 -0400
+Started GET "/cats/1/edit" for ::1 at 2021-04-23 19:16:09 -0400
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:35
+Started POST "/__better_errors/6e7edad1e7b64153/eval" for ::1 at 2021-04-23 19:19:14 -0400
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (1.6ms)
+Started POST "/__better_errors/6e7edad1e7b64153/eval" for ::1 at 2021-04-23 19:19:14 -0400
+Completed 200 OK in 184724ms (Views: 62.6ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/cats/1/edit" for ::1 at 2021-04-23 19:20:01 -0400
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:35
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (0.9ms)
+Started GET "/cats/1/edit" for ::1 at 2021-04-23 19:20:25 -0400
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 23920ms (Views: 54.1ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mCat Load (6.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:35
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 2821ms (Views: 35.2ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/cats/1/edit" for ::1 at 2021-04-23 19:21:08 -0400
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.9ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:35
+Started GET "/cats/1/edit" for ::1 at 2021-04-23 19:21:20 -0400
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (0.6ms)
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (1.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:35
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/edit.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 13465ms (Views: 1473.6ms | ActiveRecord: 0.9ms)
+
+
+Completed 200 OK in 1478ms (Views: 132.6ms | ActiveRecord: 1.4ms)
+
+
