@@ -1,5 +1,5 @@
 <body>
-  <form action="/cats" method="post">
+  <form action="<%= cat_url(@cat) %>" method="post">
   <input type="hidden" name="_method" value="PATCH">
   <label for='name'>Name</label><br>
   <input type="text" id='name' name="cat[name]" value="<%=@cat.name %>"><br>
@@ -20,6 +20,6 @@
     <br>
   <textarea id='description' name="cat[description]"><%=@cat.description%>
   </textarea><br>
-  <input type="submit" value = "Add this cat">
+  <input type="submit" value = "Change this cat">
   </form>
 </body>
