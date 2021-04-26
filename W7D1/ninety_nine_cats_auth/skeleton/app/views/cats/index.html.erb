@@ -7,9 +7,4 @@
 </ul>
 
 <a href="<%= new_cat_url %>">Create cat</a>
-<% if logged_in? %>
-  <form action="/session" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Log Out">
-  </form>
-<% end %>
+

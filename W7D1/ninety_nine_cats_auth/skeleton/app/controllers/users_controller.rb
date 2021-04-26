@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   def create
     new_user = User.new(user_params)
     if new_user.save
+      login(new_user)
       redirect_to cats_url
     else
-      debugger
       redirect_to new_user_url
     end
   end

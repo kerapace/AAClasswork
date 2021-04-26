@@ -9,6 +9,20 @@
   </head>
 
   <body>
+    <header>
+      <h1>99 Cats</h1>
+      <% if logged_in? %>
+        <h3><%= current_user.username %></h3>
+        <form action="/session" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Log Out">
+        </form>
+      <% else %>
+        <form action="/session/new" method="GET">
+          <input type="submit" value="Log In">
+        </form>
+      <% end  %>
+    </header>
     <%= yield %>
   </body>
 </html>
