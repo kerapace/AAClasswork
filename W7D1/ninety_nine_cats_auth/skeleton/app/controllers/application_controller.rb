@@ -1,2 +1,28 @@
 class ApplicationController < ActionController::Base
+
+    def current_user
+        User.find_by(session_token: session[:session_token])
+    end
+
+    def require_login
+        redirect_to new_session_url unless logged_in?
+    end
+
+    def require_logout
+        redirect_to cats_url if logged_in?
+    end
+
+    def logged_in?
+        !!current_user
+    end
+
+    def login
+        session[:session_token] = user.reset_session_token!
+    end
+
+    def log_out
+        current_user.reset_session_token! if logged_in?
+        session[:session_token] = nil
+        @current_user = nil
+    end
 end
