@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'bcrypt'
 require 'securerandom'
 
@@ -39,4 +51,8 @@ class User < ApplicationRecord
             nil
         end
     end
+
+    has_many :cats,
+        class_name: :Cat,
+        foreign_key: :user_id
 end

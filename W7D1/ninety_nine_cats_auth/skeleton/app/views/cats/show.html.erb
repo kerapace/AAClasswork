@@ -1,5 +1,4 @@
 <h1><%= @cat.name %></h1>
-
 <table>
   <tr>
     <th>Attribute</th>
@@ -11,10 +10,14 @@
       <td><%= @cat.send(attr_name) %></td>
     </tr>
   <% end %>
+    <tr>
+      <td>Owner</td>
+      <td><%= @user.username %></td>
+    </tr>
 </table>
-
-<a href="<%= edit_cat_url(@cat) %>">Edit <%= @cat.name %></a>
-
+<%if current_user.id == @cat.user_id %>
+  <a href="<%= edit_cat_url(@cat) %>">Edit <%= @cat.name %></a>
+<% end %>
 <h2>Rental Requests</h2>
 <table>
   <tr>

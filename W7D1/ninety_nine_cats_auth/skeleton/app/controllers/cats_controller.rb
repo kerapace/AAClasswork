@@ -3,9 +3,10 @@ class CatsController < ApplicationController
     @cats = Cat.all
     render :index
   end
-
+  #gwendolyn, swimming
   def show
     @cat = Cat.find(params[:id])
+    @user = User.find_by(id: @cat.user_id)
     render :show
   end
 
@@ -16,6 +17,7 @@ class CatsController < ApplicationController
 
   def create
     @cat = Cat.new(cat_params)
+    @cat.user_id = current_user.id
     if @cat.save
       redirect_to cat_url(@cat)
     else
@@ -26,7 +28,11 @@ class CatsController < ApplicationController
 
   def edit
     @cat = Cat.find(params[:id])
-    render :edit
+    if current_user == @cat.owner
+      render :edit
+    else
+      redirect_to cat_url(@cat)
+    end
   end
 
   def update
