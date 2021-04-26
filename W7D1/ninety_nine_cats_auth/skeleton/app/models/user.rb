@@ -19,6 +19,16 @@ class User < ApplicationRecord
     validates :password, length: {minimum: 6, allow_nil: true}
     before_validation :ensure_session_token
 
+    has_many :cats,
+        dependent: :destroy,
+        class_name: :Cat,
+        foreign_key: :user_id
+
+    has_many :requests,
+        dependent: :destroy,
+        foreign_key: :requester_id,
+        class_name: :CatRentalRequest
+
     def password
         @password
     end
@@ -52,7 +62,5 @@ class User < ApplicationRecord
         end
     end
 
-    has_many :cats,
-        class_name: :Cat,
-        foreign_key: :user_id
+    
 end
