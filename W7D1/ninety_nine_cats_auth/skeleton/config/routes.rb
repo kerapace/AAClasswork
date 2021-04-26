@@ -8,7 +8,13 @@ Rails.application.routes.draw do
     end
   end
 
+  # resources :users, only: [:new, :create] do
+  #  resource :sessions, only: [:create, :destroy]
+  # end
+
   resources :users, only: [:new, :create]
+
+  # get 'login', action: :new, controller: 'sessions'
 
   resource :session, only: [:new, :create, :destroy]
 
