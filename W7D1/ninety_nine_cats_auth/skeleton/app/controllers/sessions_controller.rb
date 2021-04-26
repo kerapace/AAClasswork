@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    u = User.find_by_credentials(params[:user][:username], params[:user][:password])
-    if u
-      login(u)
+    user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+    if user
+      login(user)
       redirect_to cats_url
     else
       render :new
@@ -14,7 +14,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    
+    log_out
+    redirect_to new_session_url
   end
 
   private
