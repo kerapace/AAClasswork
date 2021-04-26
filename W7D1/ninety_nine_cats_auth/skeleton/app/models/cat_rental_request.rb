@@ -9,7 +9,7 @@
 #  status     :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
+#  requester_id :integer        not null
 class CatRentalRequest < ApplicationRecord
   # .freeze renders constants immutable
   STATUS_STATES = %w(APPROVED DENIED PENDING).freeze
@@ -18,6 +18,7 @@ class CatRentalRequest < ApplicationRecord
   validates :status, inclusion: STATUS_STATES
   validate :start_must_come_before_end
   validate :does_not_overlap_approved_request
+  validate :user_cannot_request_own_cat
 
   belongs_to :cat
 
@@ -166,5 +167,10 @@ class CatRentalRequest < ApplicationRecord
     return if start_date < end_date
     errors[:start_date] << 'must come before end date'
     errors[:end_date] << 'must come after start date'
+  end
+
+  def user_cannot_request_own_cat
+    return if self.requester != self.cat.owner
+    errors[:base] << 'user cannot request own cat'
   end
 end
