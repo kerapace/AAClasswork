@@ -1,0 +1,7 @@
+<ul>
+    <li><%= @album.band.band_name %></li>
+    <li><%= @album.title %></li>
+    <li><%= @album.year %></li>
+    <li><%= @album.recording_type %></li>
+</ul>
+<a href = "<%= edit_album_url(@album) %>">Edit this album's information</a>

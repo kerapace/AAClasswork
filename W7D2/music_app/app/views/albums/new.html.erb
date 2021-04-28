@@ -1,0 +1,12 @@
+<form action="<%=band_albums_url%>" method="POST">
+    <input type= "hidden" name="authenticity_token" value = <%= form_authenticity_token %>>
+    <input type= "text" name="album[title]" placeholder="Title"><br>
+    <input type= "number" name="album[year]" placeholder="Year"><br>
+    <select name= "album[recording_type]">
+        <option disabled selected>Choose a recording type</option>
+        <%Album::RECORDING_TYPES.each do |val| %>
+            <option value="<%=val%>"><%=val.capitalize%></option>
+        <% end %>
+    </select>
+    <input type= "submit" value="Submit album">
+</form>

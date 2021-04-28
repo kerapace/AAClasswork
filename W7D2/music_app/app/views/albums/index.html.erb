@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Band</th>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Type</th>
+    </tr>
+    <% @albums.each do |album| %>
+        <tr>
+            <th><a href = "<%=band_url(album.band)%>"><%= album.band.band_name %></a></th>
+            <th><a href = "<%=album_url(album)%>"><%= album.title %></a></th>
+            <th><%= album.year %></th>
+            <th><%= album.recording_type %></th>
+        </tr>
+    <% end %>
+</table>

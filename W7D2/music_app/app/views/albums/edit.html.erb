@@ -1,0 +1,13 @@
+<form action="<%=album_url(@album)%>" method="POST">
+    <input type= "hidden" name= "_method" value="PATCH">
+    <input type= "hidden" name="authenticity_token" value = <%= form_authenticity_token %>>
+    <input type= "text" name="album[title]" value= "<%= @album.title%>"><br>
+    <input type= "number" name="album[year]" value="<%= @album.year%>"><br>
+    <select name= "album[recording_type]">
+        <option disabled <%= "selected" if @album.recording_type.nil?%>>Choose a recording type</option>
+        <%Album::RECORDING_TYPES.each do |val| %>
+            <option value="<%=val%>" <%="selected" if @album.recording_type == val%>><%=val.capitalize%></option>
+        <% end %>
+    </select>
+    <input type= "submit" value="Submit changes">
+</form>

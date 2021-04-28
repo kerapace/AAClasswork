@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   # get 'login', action: :new, controller: 'sessions'
 
-  resource :session, only: [:new, :create, :destroy]
+  resources :session, only: [:new, :create, :destroy]
 
   root to: redirect('/cats')
 end
