@@ -24,7 +24,28 @@ RSpec.describe User, type: :model do
             expect(User.find_by_credentials("cat", "testing")).to be(nil)
         end
     end
-        
+    
+    describe "password=" do
+        it "should take in a password argument" do
+            expect {user.password = "fifteen"}.to_not raise_error
+        end
+
+        it "should set password to an instance variable" do
+            user.password = "foobar"
+            expect(user.password).to eq("foobar")
+        end
+
+        it "should call BCrypt::Password.create" do
+            expect(BCrypt::Password).to receive(:create).with("foobar")
+            user.password = "foobar"
+        end
+
+        it "should initialize password_digest" do
+            new_user = User.new(username: "foo")
+            new_user.password = "foobar"
+            expect(new_user.password_digest).to_not be(nil)
+        end
+    end
 
 
 end
