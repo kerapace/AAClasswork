@@ -47,5 +47,40 @@ RSpec.describe User, type: :model do
         end
     end
 
+    describe "#is_password?" do 
+        it "should return true when the same password is passed in" do 
+            expect(user.is_password?("testing")).to be(true)
+        end
+
+        it "it should return false if the password is not the same" do 
+            expect(user.is_password?("toasting")).to be(false)
+        end
+
+        it "it should not access the password variable" do 
+            expect(user).to_not receive(:password)
+        end
+    end
+
+    describe "#reset_session_token!" do 
+        it "should set the session token to a new value" do 
+            token = user.session_token
+            user.reset_session_token! 
+            expect(user.session_token).to_not eq(token)
+        end
+
+        it "it should save the new token into the database" do 
+            expect(user).to receive(:save!)
+            user.reset_session_token! 
+        end
+    end
+
+    describe "#ensure_session_token" do 
+        it "should initialize the session token field" do 
+            expect(new_user).to receive(:session_token=)
+            new_user = User.new(username: "max", password: "123456")
+            expect(new_user.session_token).to_not be(nil)
+        end
+
+    end
 
 end
