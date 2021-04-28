@@ -3,6 +3,6 @@ class Track < ApplicationRecord
     validate :valid_length
 
     def valid_length
-        return false if self.length !~ %r{^(\d+:)*\d+$}
+        return false if self.length !~ %r{^(\d+:)*\d+$} 
     end
 end

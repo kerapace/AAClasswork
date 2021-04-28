@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
+require 'byebug'
 
-    before_action :new, 
+class UsersController < ApplicationController
 
     def new
         render :new
@@ -10,9 +10,10 @@ class UsersController < ApplicationController
         user = User.new(user_params)
         if user.save
             login!(user)
-            redirect_to "/"
+            redirect_to bands_url
         else
-            redirect_to "/"
+            flash.now[:errors] = user.errors.full_messages
+            render :new
         end
     end
 
