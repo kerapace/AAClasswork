@@ -35,9 +35,9 @@ RSpec.describe User, type: :model do
 
   describe "#reset_session_token!" do
     it 'should set the session token to a new value' do
-      token = new_user[:session_token]
+      token = new_user.session_token
       new_user.reset_session_token!
-      expect(new_user[:session_token]).to_not eq(token)
+      expect(new_user.session_token).to_not eq(token)
     end
 
     it 'should save the new token into the database' do

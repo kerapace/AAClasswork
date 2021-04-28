@@ -6,13 +6,13 @@ RSpec.describe User, type: :model do
         it {should validate_length_of(:password).is_at_least(6)}
         it {should validate_presence_of(:password_digest)}
         it {should validate_presence_of(:session_token)}
+        it {should validate_uniqueness_of(:username)}
     end
 
     subject(:user) {User.find_by_credentials("Test", "testing")}
-        it {should validate_uniqueness_of(:username)}
-    end
+       
     before(:all) do 
-        User.destroy
+        User.destroy_all
         User.new(username: "Test", password: "testing").save 
     end
     describe "::find_by_credentials" do 
@@ -75,12 +75,10 @@ RSpec.describe User, type: :model do
     end
 
     describe "#ensure_session_token" do 
-        it "should initialize the session token field" do 
-            expect(new_user).to receive(:session_token=)
+        it "should initialize the session token field" do
             new_user = User.new(username: "max", password: "123456")
+            new_user.ensure_session_token
             expect(new_user.session_token).to_not be(nil)
         end
-
     end
-
 end
