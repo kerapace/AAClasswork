@@ -55,6 +55,10 @@
   }
 }
 
+.right-nav > ul > li:hover {
+	background-color: black;
+	color: white;
+}
 .left-nav > ul > li:hover,
 .right-nav > ul > li:last-of-type:hover {
 

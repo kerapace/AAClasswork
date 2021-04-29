@@ -10,6 +10,7 @@
 
 .section-nav p:hover {
     background-color: $light-gray;
+    text-decoration: none;
 }
 
 .section-nav .all{
@@ -17,7 +18,13 @@
     font-family: $sans-serif;
 }
 
-.section-nav .all:hover{
+.all:hover{
     background-color: white;
     text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+    .section-nav {
+        display: none;
+    }
 }

@@ -14,13 +14,15 @@
     padding: 5px;
     padding-right: 30px;
     left: -85px;
-    top: 30px;
+    top: 25px;
     box-shadow: -1px 4px 6px 1px rgba(0, 0, 0, 0.09);
 }
 
 .dropdown-subtitle {
     font-size: 8px;
     font-weight: bold;
+    color: $light-gray;
+
 }
 
 .editions {

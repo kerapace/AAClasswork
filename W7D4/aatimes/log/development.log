@@ -1163,3 +1163,122 @@ Processing by StaticPagesController#index as HTML
 Completed 200 OK in 113ms (Views: 110.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/assets/application.self-c059efd0649874dd6e1149610a41618b0472a7df04f60ff9566d1d469b7f21d6.css?body=1" for ::1 at 2021-04-29 16:37:46 -0400
+Started GET "/" for ::1 at 2021-04-29 18:18:55 -0400
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from block (3 levels) in <class:Railtie> at /home/kerapace/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.0.7.2/lib/active_record/railtie.rb:113)
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered shared/_gear_dropdown.html.erb (1.6ms)
+  Rendered shared/_main_nav.html.erb (7.6ms)
+  Rendered shared/_masthead.html.erb (1794.6ms)
+  Rendered shared/_sections_nav.html.erb (3.2ms)
+  Rendered shared/_search_modal.html.erb (3.7ms)
+  Rendered shared/_main_content.html.erb (1.1ms)
+  Rendered static_pages/index.html.erb within layouts/application (1863.4ms)
+Completed 200 OK in 2159ms (Views: 2150.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-0c8e823e637c0f11957bd4fd2537a823e7d18e0743c063669f43092f23932a06.css?body=1" for ::1 at 2021-04-29 18:19:59 -0400
+Started GET "/assets/new_office.jpg" for ::1 at 2021-04-29 18:20:00 -0400
+Started GET "/" for ::1 at 2021-04-29 18:25:36 -0400
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered shared/_gear_dropdown.html.erb (1.3ms)
+  Rendered shared/_main_nav.html.erb (6.6ms)
+  Rendered shared/_masthead.html.erb (4.0ms)
+  Rendered shared/_sections_nav.html.erb (0.6ms)
+  Rendered shared/_search_modal.html.erb (0.4ms)
+  Rendered shared/_main_content.html.erb (1.0ms)
+  Rendered static_pages/index.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 303ms (Views: 300.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/new_office.jpg" for ::1 at 2021-04-29 18:26:37 -0400
+Started GET "/" for ::1 at 2021-04-29 18:28:20 -0400
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered shared/_gear_dropdown.html.erb (1.3ms)
+  Rendered shared/_main_nav.html.erb (3.0ms)
+  Rendered shared/_masthead.html.erb (4.1ms)
+  Rendered shared/_sections_nav.html.erb (0.5ms)
+  Rendered shared/_search_modal.html.erb (1.8ms)
+  Rendered shared/_main_content.html.erb (1.2ms)
+  Rendered static_pages/index.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 377ms (Views: 373.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-9e4f849d25f439f5a5c176a1036aa45fcb726177f7b3f249e29b8e8abadf168a.css?body=1" for ::1 at 2021-04-29 18:29:21 -0400
+Started GET "/assets/new_office.jpg" for ::1 at 2021-04-29 18:29:21 -0400
+Started GET "/" for ::1 at 2021-04-29 18:31:48 -0400
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered shared/_gear_dropdown.html.erb (1.3ms)
+  Rendered shared/_main_nav.html.erb (3.9ms)
+  Rendered shared/_masthead.html.erb (3.8ms)
+  Rendered shared/_sections_nav.html.erb (0.9ms)
+  Rendered shared/_search_modal.html.erb (0.7ms)
+  Rendered shared/_main_content.html.erb (3.1ms)
+  Rendered static_pages/index.html.erb within layouts/application (30.4ms)
+Completed 200 OK in 340ms (Views: 330.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-b31205f94a5c4fb8a5d945bba523248f5d0d5b8b321e29f6db7bf714223f2591.css?body=1" for ::1 at 2021-04-29 18:32:48 -0400
+Started GET "/assets/new_office.jpg" for ::1 at 2021-04-29 18:32:49 -0400
+Started GET "/" for ::1 at 2021-04-29 18:36:00 -0400
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered shared/_gear_dropdown.html.erb (0.6ms)
+  Rendered shared/_main_nav.html.erb (2.3ms)
+  Rendered shared/_masthead.html.erb (4.6ms)
+  Rendered shared/_sections_nav.html.erb (1.1ms)
+  Rendered shared/_search_modal.html.erb (0.6ms)
+  Rendered shared/_main_content.html.erb (1.7ms)
+  Rendered static_pages/index.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 249ms (Views: 246.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-04-29 18:36:07 -0400
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered shared/_gear_dropdown.html.erb (3.3ms)
+  Rendered shared/_main_nav.html.erb (8.0ms)
+  Rendered shared/_masthead.html.erb (4.3ms)
+  Rendered shared/_sections_nav.html.erb (0.5ms)
+  Rendered shared/_search_modal.html.erb (1.0ms)
+  Rendered shared/_main_content.html.erb (1.7ms)
+  Rendered static_pages/index.html.erb within layouts/application (42.3ms)
+Completed 200 OK in 88ms (Views: 86.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-edf615df395e609b2197de12c87bdc9b879c98bc5f6228d1ccefa70b6c150b0b.css?body=1" for ::1 at 2021-04-29 18:37:08 -0400
+Started GET "/assets/new_office.jpg" for ::1 at 2021-04-29 18:37:08 -0400
+Started GET "/" for ::1 at 2021-04-29 18:40:56 -0400
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered shared/_gear_dropdown.html.erb (0.4ms)
+  Rendered shared/_main_nav.html.erb (2.4ms)
+  Rendered shared/_masthead.html.erb (2.6ms)
+  Rendered shared/_sections_nav.html.erb (0.8ms)
+  Rendered shared/_search_modal.html.erb (0.7ms)
+  Rendered shared/_main_content.html.erb (0.7ms)
+  Rendered static_pages/index.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 179ms (Views: 177.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-df5365e3cea3afa2220fe5a68fe14f880081601f116ef56999de2f73502be3f1.css?body=1" for ::1 at 2021-04-29 18:41:56 -0400
+Started GET "/assets/new_office.jpg" for ::1 at 2021-04-29 18:41:56 -0400
+Started GET "/" for ::1 at 2021-04-29 19:02:39 -0400
+Processing by StaticPagesController#index as HTML
+  Rendering static_pages/index.html.erb within layouts/application
+  Rendered shared/_gear_dropdown.html.erb (0.7ms)
+  Rendered shared/_main_nav.html.erb (2.8ms)
+  Rendered shared/_masthead.html.erb (3.4ms)
+  Rendered shared/_sections_nav.html.erb (1.0ms)
+  Rendered shared/_search_modal.html.erb (1.1ms)
+  Rendered shared/_main_content.html.erb (0.7ms)
+  Rendered static_pages/index.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 257ms (Views: 255.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-70841f8656d86f4a9703446dd46b7f399c8a41085bc22c7c53deb7e5bb808f3e.css?body=1" for ::1 at 2021-04-29 19:03:40 -0400
+Started GET "/assets/new_office.jpg" for ::1 at 2021-04-29 19:03:40 -0400
