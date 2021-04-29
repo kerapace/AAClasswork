@@ -1,3 +1,22 @@
-// Use the gear_dropdown.png screenshot as a style guide
-<ul class = "gear-dropdown">
-</ul>
+.right-nav > ul > li:last-of-type:hover #gear-dropdown {
+    position: absolute;
+    display: block;
+}
+
+#gear-dropdown {
+    display: none;
+    background-color: white;
+    z-index: 2;
+    border: 1px solid $light-gray;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.dropdown-subtitle {
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.editions a{
+
+}
