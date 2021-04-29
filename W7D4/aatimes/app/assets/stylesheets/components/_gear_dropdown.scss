@@ -10,6 +10,8 @@
     border: 1px solid $light-gray;
     border-radius: 3px;
     padding: 5px;
+    margin-right: 100px;
+    
 }
 
 .dropdown-subtitle {
@@ -17,6 +19,8 @@
     font-weight: bold;
 }
 
-.editions a{
-
+.editions a {
+    width: 100%;
+    color: $light-gray;
+    border-radius: 3px;
 }
