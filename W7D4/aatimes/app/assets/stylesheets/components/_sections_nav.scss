@@ -1,0 +1,23 @@
+.section-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-nav p{
+    margin: 10px;
+}
+
+.section-nav p:hover {
+    background-color: $light-gray;
+}
+
+.section-nav .all{
+    text-transform: uppercase;
+    font-family: $sans-serif;
+}
+
+.section-nav .all:hover{
+    background-color: white;
+    text-decoration: underline;
+}
