@@ -17,6 +17,8 @@
 		font-size: 10px;
 		font-family: $sans-serif;
 		text-transform: uppercase;
+		margin-left: 10px;
+		margin-top: 6px;
     }
   }
 
@@ -32,14 +34,19 @@
     > li {
 		background-color: #6288A5;
 		padding: 5px;
-		margin: 10px;
 		color: white;
-		font-family: $sans-serif;
 		border-radius: 3px;
+		margin-left: 10px;
+		font-size: 10px;
+		font-family: $sans-serif;
+		text-transform: uppercase;
     }
 
     > li:last-of-type {
-  
+		padding: 5px;
+		background-color: white;
+		color: black;
+		font-size: 14px;
     }
   }
   
