@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    before_action :require_login, only: [:index, :show]
-    before_action :require_logout, only: [:new, :create]
+    # before_action :require_login, only: [:index, :show]
+    # before_action :require_logout, only: [:new, :create]
 
     def index
         @users = User.all
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     def create
         user = User.new(user_params)
         if user.save
-            login(user)
+            login!(user)
             redirect_to user_url(user)
         else
             flash.now[:errors] = user.errors.full_messages
