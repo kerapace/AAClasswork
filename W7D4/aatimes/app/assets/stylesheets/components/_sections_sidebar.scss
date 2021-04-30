@@ -1,12 +1,35 @@
 #sections-sidebar {
-    opacity: 0;
+    opacity: 1;
+    left: -150px;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    left: 0;
+    position: fixed;
     top: 0;
+    transition: left .25s; 
+    text-transform: none;
+    font-weight: bold;
+    font-family: $sans-serif;
+    
+}
+
+#sections-sidebar > section {
 }
 
 #sections-sidebar.expand {
     opacity: 1;
+    left: 0;
+}
+
+.dropdown {
+    position: relative;
+}
+.dropdown > ul {
+    display: none;
+    position: absolute;
+    /* use top, left, right, bottom to position */
+}
+.dropdown:hover > ul {
+    /* applies the following style to uls inside .dropdown */
+    /* but only when .dropdown is being hovered over */
+    display: block;
 }
