@@ -1,3 +1,12 @@
-.sections-sidebar {
-    display: flex;  
+#sections-sidebar {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#sections-sidebar.expand {
+    opacity: 1;
 }
