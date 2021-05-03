@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     before_action :require_login, only: [:edit, :update, :destroy]
 
     def new
+        @user = User.new
         render :new
     end
 
