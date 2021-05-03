@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     before_action :require_logout, only: :create
 
     def new
+        @user = User.new
         render :new
     end
 
