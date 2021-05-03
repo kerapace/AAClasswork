@@ -1,0 +1,16 @@
+aside#search-modal {
+    position: absolute;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+    margin: 0 auto;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s;
+}
+
+#search-modal.expand-search {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    z-index: 8;
+    opacity: 1;
+}

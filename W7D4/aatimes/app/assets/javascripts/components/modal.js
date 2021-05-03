@@ -1,7 +1,7 @@
 /* global $ */
 
 const toggleModal = () => {
-	$("#search-modal").toggleClass('expand')
+	$("#search-modal").toggleClass('expand-search')
 	$("#overlay").toggleClass('hidden')
 };
 

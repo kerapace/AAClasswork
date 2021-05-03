@@ -115,6 +115,15 @@ article {
 	}
 }
 
+#overlay {
+	display: absolute;
+	opacity: 0.4;
+	background-color: #ccc;
+	width: 100vw;
+	height: 100vh;
+	z-index: 7;
+}
+
 @media all and (max-width: 1000px) {
   .opinion, .main-story, .main-content{
     width: 100%;
