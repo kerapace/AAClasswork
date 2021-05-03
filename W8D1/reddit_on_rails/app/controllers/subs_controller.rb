@@ -50,7 +50,7 @@ class SubsController < ApplicationController
     end
 
     def index
-        @subs = Sub.all
+        @subs = Sub.all.order('created_at DESC')
         render :index
     end
 
