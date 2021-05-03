@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+    before_action :require_login, only: [:edit, :update, :destroy]
+
     def new
         render :new
     end
@@ -31,15 +33,31 @@ class UsersController < ApplicationController
             logout!
             @user.destroy
         else
-            
+            render :index
+        end
+    end
+
+    def edit
+        @user = User.find_by(id: params[:id])
+        if @user == current_user
+            render :edit
+        else
+            redirect_to users_url
+        end
+    end
+
+    def update
+        @user = User.find_by(id: params[:id])
+        if @user && @user.update(user_params)
+            redirect_to user_url(@user)
+        else
+            flash[:errors] = @user.errors.full_messages
+            render :edit
         end
     end
 
     private
-
     def user_params
         params.require(:user).permit(:username, :email, :password)
     end
-
-
 end
