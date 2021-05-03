@@ -45,7 +45,7 @@ class SubsController < ApplicationController
     end
 
     def show
-        @sub = Sub.find_by(id: params[:id]).includes(:posts)
+        @sub = Sub.find_by(id: params[:id]).includes(:posts).includes(:author).order('created_at DESC')
         render :show
     end
 
