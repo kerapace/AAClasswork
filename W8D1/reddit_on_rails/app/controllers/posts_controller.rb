@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
+        @sub = Sub.find_by(id: params[:sub_id])
         render :new
     end
 
@@ -43,7 +44,7 @@ class PostsController < ApplicationController
     end
 
     def show
-        @post = Post.find_by(id: params[:id])
+        @post = Post.find_by(id: params[:id]).includes(:sub)
         render :show
     end
 

@@ -478,3 +478,312 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 16ms (Views: 6.6ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2021-05-03 17:42:49 -0400
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kerapace/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/kerapace/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/kerapace/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.5/lib/rails/templates/rails/welcome/index.html.erb (6.2ms)
+Completed 200 OK in 32ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/subs/new" for ::1 at 2021-05-03 17:42:55 -0400
+Processing by SubsController#new as HTML
+  [1m[36mUser Load (7.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 70ms (ActiveRecord: 23.6ms)
+
+
+Started GET "/session/new" for ::1 at 2021-05-03 17:42:55 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.9ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 656ms (Views: 576.7ms | ActiveRecord: 47.7ms)
+
+
+Started GET "/users/new" for ::1 at 2021-05-03 17:43:15 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (4.2ms)
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 130ms (Views: 122.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/sessions/new" for ::1 at 2021-05-03 17:43:25 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/sessions/new"):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/session/new" for ::1 at 2021-05-03 17:43:29 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 191ms (Views: 185.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/session" for ::1 at 2021-05-03 17:43:39 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"7GDc4YiYhueo7ugRtD-WUxnIx9r_9LLCO1AzxoNTRieu3Xrsr3X3knLzBp_QZYYukAND52Njx5mmHQVrH4OShw", "user"=>{"username"=>"kazziekaz", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "kazziekaz"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "kazziekaz"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "kaz@kaz.kaz"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41
+  [1m[36mUser Update (15.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "WmOd_1LpXqqLrm2JxbJgjw"], ["updated_at", "2021-05-03 21:43:40.017749"], ["id", 1]]
+  ↳ app/models/user.rb:41
+  [1m[35m (24.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41
+Redirected to http://localhost:3000/users
+Completed 302 Found in 380ms (ActiveRecord: 45.1ms)
+
+
+Started GET "/users" for ::1 at 2021-05-03 17:43:40 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  Rendered users/index.html.erb within layouts/application (7.8ms)
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "WmOd_1LpXqqLrm2JxbJgjw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 69ms (Views: 62.5ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/subs/new" for ::1 at 2021-05-03 17:43:49 -0400
+Processing by SubsController#new as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "WmOd_1LpXqqLrm2JxbJgjw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  Rendering subs/new.html.erb within layouts/application
+  Rendered subs/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 204ms (Views: 70.4ms | ActiveRecord: 14.5ms)
+
+
+Started POST "/subs" for ::1 at 2021-05-03 17:44:07 -0400
+Processing by SubsController#create as HTML
+  Parameters: {"authenticity_token"=>"n6ZypbPpggDpO22t_JsWOhUlFra-4iB1dcqCJOqYYy3dG9SolATzdTMmgyOYwQZHnO6SiyJ1VS7oh7SJdki3jQ", "sub"=>{"title"=>"kaz", "description"=>"A place for all Kazzes"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "WmOd_1LpXqqLrm2JxbJgjw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/subs_controller.rb:13
+  [1m[36mSub Exists (7.7ms)[0m  [1m[34mSELECT  1 AS one FROM "subs" WHERE "subs"."title" = $1 LIMIT $2[0m  [["title", "kaz"], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:13
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:13
+  [1m[36mSub Create (6.4ms)[0m  [1m[32mINSERT INTO "subs" ("title", "description", "moderator_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "kaz"], ["description", "A place for all Kazzes"], ["moderator_id", 1], ["created_at", "2021-05-03 21:44:07.996266"], ["updated_at", "2021-05-03 21:44:07.996266"]]
+  ↳ app/controllers/subs_controller.rb:13
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/subs_controller.rb:13
+Redirected to http://localhost:3000/subs/1
+Completed 302 Found in 83ms (ActiveRecord: 21.0ms)
+
+
+Started GET "/subs/1" for ::1 at 2021-05-03 17:44:08 -0400
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (1.1ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:48
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `includes' for #<Sub:0x00007fd62d5ac368>):
+  
+app/controllers/subs_controller.rb:48:in `show'
+Started GET "/subs/1" for ::1 at 2021-05-03 17:48:17 -0400
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (18.6ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 6.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Sub::ActiveRecord_Relation:0x00007fd62ce7a4a0>):
+    1: <h1><%=@sub.title%></h1>
+    2: <section class="posts-display">
+    3:     <% @sub.posts.each do |post| %>
+    4:         <div class="post-display">
+  
+app/views/subs/show.html.erb:1:in `_app_views_subs_show_html_erb__4378836900465422992_70278992481400'
+app/controllers/subs_controller.rb:49:in `show'
+Started GET "/subs/1" for ::1 at 2021-05-03 17:53:10 -0400
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:48
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mPost Load (10.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."sub_id" = $1 ORDER BY created_at DESC[0m  [["sub_id", 1]]
+  ↳ app/views/subs/show.html.erb:3
+  Rendered subs/show.html.erb within layouts/application (18.0ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "WmOd_1LpXqqLrm2JxbJgjw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 128ms (Views: 81.5ms | ActiveRecord: 27.4ms)
+
+
+Started GET "/subs/1/posts/new" for ::1 at 2021-05-03 17:53:19 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"sub_id"=>"1"}
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (5.4ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 2.7ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"update", :controller=>"posts", :id=>nil}, missing required keys: [:id]):
+    1: <h1>New Post</h1>
+    2: 
+    3: <form action="<%= post_url(@post) %>" method="POST">
+    4:     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    5: 
+    6:     <label>Title:
+  
+app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__552322792475902405_70278888878700'
+app/controllers/posts_controller.rb:5:in `new'
+Started GET "/subs/1/posts/new" for ::1 at 2021-05-03 17:54:44 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"sub_id"=>"1"}
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (172.5ms)
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `new_sub_post' for #<#<Class:0x00007fd6286a1390>:0x00007fd62d48d5b8>
+Did you mean?  new_sub_path):
+    1: <h1>New Post</h1>
+    2: 
+    3: <form action="<%= new_sub_post(@post.sub,@post) %>" method="POST">
+    4:     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    5: 
+    6:     <label>Title:
+  
+app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__552322792475902405_70278929716060'
+app/controllers/posts_controller.rb:5:in `new'
+Started GET "/subs/1/posts/new" for ::1 at 2021-05-03 17:54:58 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"sub_id"=>"1"}
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"posts", :format=>#<Post id: nil, title: nil, url: nil, content: nil, sub_id: nil, author_id: nil, created_at: nil, updated_at: nil>, :sub_id=>nil}, possible unmatched constraints: [:sub_id]):
+    1: <h1>New Post</h1>
+    2: 
+    3: <form action="<%= new_sub_post_url(@post.sub,@post) %>" method="POST">
+    4:     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    5: 
+    6:     <label>Title:
+  
+app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__552322792475902405_70278924194940'
+app/controllers/posts_controller.rb:5:in `new'
+Started GET "/" for ::1 at 2021-05-03 17:56:55 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/kerapace/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/kerapace/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.5/lib/rails/templates/rails/welcome/index.html.erb (3.8ms)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/subs/1/posts/new" for ::1 at 2021-05-03 17:57:03 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"sub_id"=>"1"}
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (8.3ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"posts", :sub_id=>nil}, missing required keys: [:sub_id]):
+    1: <h1>New Post</h1>
+    2: 
+    3: <form action="<%= new_sub_post_url(@sub) %>" method="POST">
+    4:     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    5: 
+    6:     <label>Title:
+  
+app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__552322792475902405_70278992948000'
+app/controllers/posts_controller.rb:5:in `new'
+Started GET "/subs/1/posts/new" for ::1 at 2021-05-03 17:59:54 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"sub_id"=>"1"}
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (8.5ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    1: <h1>New Post</h1>
+    2: 
+    3: <form action="<%= new_sub_post_url(@post.sub.id) %>" method="POST">
+    4:     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    5: 
+    6:     <label>Title:
+  
+app/views/posts/new.html.erb:3:in `_app_views_posts_new_html_erb__552322792475902405_70278887078160'
+app/controllers/posts_controller.rb:5:in `new'
+Started GET "/subs/1/posts/new" for ::1 at 2021-05-03 18:00:58 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"sub_id"=>"1"}
+  [1m[36mSub Load (14.7ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE (1) LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 22.7ms)
+
+
+  
+ActiveRecord::StatementInvalid (PG::DatatypeMismatch: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: SELECT  "subs".* FROM "subs" WHERE (1) LIMIT $1
+                                            ^
+: SELECT  "subs".* FROM "subs" WHERE (1) LIMIT $1):
+  
+app/controllers/posts_controller.rb:5:in `new'
+Started GET "/subs/1/posts/new" for ::1 at 2021-05-03 18:01:29 -0400
+Processing by PostsController#new as HTML
+  Parameters: {"sub_id"=>"1"}
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:5
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (2.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "WmOd_1LpXqqLrm2JxbJgjw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 128ms (Views: 71.5ms | ActiveRecord: 21.3ms)
+
+
