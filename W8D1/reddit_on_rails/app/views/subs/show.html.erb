@@ -2,7 +2,7 @@
 <section class="posts-display">
     <% @sub_posts.each do |post| %>
         <div class="post-display">
-            <h3><a href="<%=post.url ? post.url : post_url(post)%>"><%= post.title %></a></h3>
+            <h3><a href="<%=post.url ? post.url : sub_post_url(@sub, post)%>"><%= post.title %></a></h3>
             <h4>Posted by <%=post.author.username%></h4>
         </div>
     <% end %>

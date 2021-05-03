@@ -30,21 +30,31 @@ class PostsController < ApplicationController
 
     def edit
         @post = Post.find_by(id: params[:id])
-        render :edit
+        if @post && current_user == @post.author
+            render :edit
+        else
+            flash[:errors] = ["You do not have permission to perform this action."]
+            redirect_to sub_post_url(@post.sub, @post)
+        end
     end
 
     def update
         @post = Post.find_by(id: params[:id])
-        if @post && @post.update(post_params)
-            redirect_to sub_url(@post.sub)
-        else            
-            flash[:errors] = @post.errors.full_messages
-            render :edit
+        if @post && current_user == @post.author
+            if  @post.update(post_params)
+                redirect_to sub_url(@post.sub)
+            else            
+                flash[:errors] = @post.errors.full_messages
+                render :edit
+            end
+        else
+            flash[:errors] = ["You do not have permission to perform this action."]
+            redirect_to sub_post_url(@post.sub, @post)
         end
     end
 
     def show
-        @post = Post.find_by(id: params[:id]).includes(:sub)
+        @post = Post.find_by(id: params[:id])
         render :show
     end
 
