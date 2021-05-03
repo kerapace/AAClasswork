@@ -101,8 +101,6 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.11.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.11.3-x86_64-linux)
-      racc (~> 1.4)
     pg (1.2.3)
     public_suffix (4.0.6)
     puma (3.12.6)
@@ -189,7 +187,6 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
-  x86_64-linux
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
@@ -216,4 +213,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   2.2.16
+   2.2.14

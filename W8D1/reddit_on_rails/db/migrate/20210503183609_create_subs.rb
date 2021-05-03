@@ -7,7 +7,7 @@ class CreateSubs < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_inde :subs, :title, unique: true
+    add_index :subs, :title, unique: true
     add_index :subs, :moderator_id
   end
 end
