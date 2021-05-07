@@ -31,16 +31,24 @@ class SubsController < ApplicationController
 
     def edit
         @sub = Sub.find_by(id: params[:id])
-        render :edit
+        if current_user.id == @sub.moderator_id
+            render :edit
+        else
+            redirect_to sub_url(@sub)
+        end
     end
 
     def update
         @sub = Sub.find_by(id: params[:id])
-        if @sub && @sub.update(sub_params)
-            redirect_to sub_url(@sub)
+        if current_user.id == @sub.moderator_id
+            if @sub && @sub.update(sub_params)
+                redirect_to sub_url(@sub)
+            else
+                flash[:errors] = @sub.errors.full_messages
+                render :edit
+            end
         else
-            flash[:errors] = @sub.errors.full_messages
-            render :edit
+            redirect_to sub_url(@sub)
         end
     end
 
@@ -60,5 +68,4 @@ class SubsController < ApplicationController
     def sub_params
         params.require(:sub).permit(:title, :description)
     end
-
 end

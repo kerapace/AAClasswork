@@ -9,18 +9,17 @@ class PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
         @post.author_id = current_user.id
-        @post.sub_id = params[:sub_id]
         if @post.save
             redirect_to sub_post_url(@post.sub_id,@post.id)
         else
-            flash[:errors]
+            flash[:errors] = @post.errors.full_messages
             redirect_to sub_url(@post.sub_id)
         end
     end
 
     def destroy
         @post = Post.find_by(id: params[:id])
-        if current_user == @post.author || current_user = @post.sub.moderator
+        if current_user.id == @post.author_id || current_user.id = @post.sub.moderator_id
             @post.destroy
         else
             flash[:errors] = ["You do not have permission to perform this action."]
@@ -60,6 +59,6 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:title,:content)
+        params.require(:post).permit(:title,:content, :sub_ids)
     end
 end
