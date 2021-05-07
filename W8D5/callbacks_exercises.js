@@ -152,6 +152,55 @@ class Clock {
     myBoundTurnOn(); // should say "Turning on a lamp"
 
 
+    Function.prototype.myThrottle = function (interval) {
+      let tooSoon = false; 
+      return (...args) => { 
+        if (tooSoon) {}
+
+        else {
+          tooSoon = true;
+          setTimeout(() => {tooSoon = false;}, interval);
+          this.call(...args)
+        }
+
+      };
+    };
+
+    
+    class Neuron {
+      fire() {
+        console.log("Firing!");
+      }
+    }
+    
+    const neuron = new Neuron();
+
+    neuron.fire = neuron.fire.myThrottle(500);
+
+    const interval = setInterval(() => {
+      neuron.fire();
+    }, 10);
+
+
+    Function.prototype.myDebounce = function (interval) {
+      let hasExecuted = false; 
+      return (...args) => { 
+        setTimeout(() => { 
+          if (!hasExecuted) {
+            this.call(...args);}, interval);
+        if (hasExecuted) {}
+
+        else {
+          hasExecuted = true;
+          this.call(...args)
+        }
+
+      };
+    };
+
+
+
+
 
 
 
