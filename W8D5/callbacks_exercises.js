@@ -42,12 +42,12 @@ class Clock {
   
   // const clock = new Clock();
 
-  const readline = require('readline');
+//   const readline = require('readline');
 
-  const reader = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+//   const reader = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+//   });
 
   function addNumbers (sum, numsLeft, completionCallback) {
     if (numsLeft > 0) {
@@ -64,3 +64,99 @@ class Clock {
   }
 
   // addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
+
+  const readline = require('readline');
+
+  const reader = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  function askIfGreaterThan(ele1, ele2, callback) {
+      reader.question(`Is ${ele1} greater than ${ele2}?\n`, function(output) {
+        if(output==="yes") {
+            callback(true);
+        }
+        else if (output==="no") {
+            callback(false);
+        }
+        else {
+            askIfGreaterThan(ele1,ele2,callback);
+        }
+      });
+  }
+   // sorted 
+
+  function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
+        if(i < arr.length - 1) {
+          askIfGreaterThan(arr[i],arr[i+1], (bool) => {
+                if(bool) {
+                    [arr[i], arr[i+1]] = [arr[i+1],arr[i]];
+                    madeAnySwaps = true;
+                }
+                innerBubbleSortLoop(arr,i+1,madeAnySwaps,outerBubbleSortLoop);
+            });
+        }
+        else {
+            outerBubbleSortLoop(madeAnySwaps);
+        }
+  }
+
+//   innerBubbleSortLoop([2,1,3,4,5],0,false,(bool) => console.log('hello!'));
+
+
+  
+
+  function absurdBubbleSort(arr, sortCompletionCallback) {
+    function outerBubbleSortLoop(madeAnySwaps) {
+        if(!madeAnySwaps) {
+            sortCompletionCallback(arr);
+        }
+        else {
+            innerBubbleSortLoop(arr,0,false,outerBubbleSortLoop);
+        }
+    }
+    outerBubbleSortLoop(true);
+  }
+
+    absurdBubbleSort([5,4,3,2,1], (arr) => {
+        console.log(arr);
+        reader.close();
+    });
+
+
+    Function.prototype.myBind = function(context) {
+        return () => {
+            this.apply(context)
+        };
+    }
+
+    class Lamp {
+        constructor() {
+          this.name = "a lamp";
+        }
+      }
+      
+    const turnOn = function() {
+    console.log("Turning on " + this.name);
+    };
+    
+    const lamp = new Lamp();
+    
+    turnOn(); // should not work the way we want it to
+    
+    const boundTurnOn = turnOn.bind(lamp);
+    const myBoundTurnOn = turnOn.myBind(lamp);
+    
+    boundTurnOn(); // should say "Turning on a lamp"
+    myBoundTurnOn(); // should say "Turning on a lamp"
+
+
+
+
+
+
+
+
+
+
