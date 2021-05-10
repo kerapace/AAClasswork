@@ -65,26 +65,28 @@
     console.log(new_sum(5)(30)(20)(1)); // => 56
     
     
-    Function.prototype.curry = function(numArgs) {
+    Function.prototype.curry = function (numArgs) {
       let finalArgs = [];
       const that = this;
       
       return function _curry(...args) {
-        finalArgs.concat(args);
+        finalArgs = finalArgs.concat(args);
         if (finalArgs.length === numArgs) {
-          return this.apply(that, finalArgs);
+          return Function.prototype.apply(that, finalArgs);
         }
         else { return _curry; }
       };
     };
     
-    function sum(... args) {
-        sum = 0;
+    function sum(...args) {
+        let acc = 0;
         for(let i = 0; i < args.length; i++) {
-            sum += args[i];
+            acc += args[i];
         }
-        return sum;
+        return acc;
     }
+
+    console.log(sum);
     console.log(sum.curry);
     console.log(sum(1,2,3,4,6)); // = 16
 
