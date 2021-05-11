@@ -2,6 +2,7 @@ const DIM_X = 800;
 const DIM_Y = 600;
 
 const Util = require("./utils");
+const MovingObject = require("./moving_object");
 
 function Ship(options) {
   this.pos = options.pos || [Math.floor(DIM_X/5),Math.floor(DIM_Y/2)];

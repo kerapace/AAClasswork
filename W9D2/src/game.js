@@ -1,5 +1,6 @@
 const Asteroid = require("./asteroid");
 const Util = require("./utils");
+const Ship = require("./ship.js");
 
 const DIM_X = 800;
 const DIM_Y = 600;
@@ -7,6 +8,7 @@ const NUM_ASTEROIDS = 10;
 function Game(ctx) {
   this.asteroids = this.addAsteroids();
   this.context = ctx;
+  this.ship = new Ship({});
 }
 
 Game.prototype.addAsteroids = function() {
@@ -15,17 +17,18 @@ Game.prototype.addAsteroids = function() {
     ast.push(new Asteroid({pos: this.randomPosition()}));
   }
   return ast;
-}
+};
 
 Game.prototype.randomPosition = function() {
   return [Math.random()*DIM_X, Math.random()*DIM_Y];
-}
+};
 
 Game.prototype.moveObjects = function() {
-  for(let i = 0; i < this.asteroids.length; i++) {
-    this.asteroids[i].move();
+  let allObjs = this.allObjects();
+  for(let i = 0; i < allObjs.length; i++) {
+    allObjs[i].move();
   }
-}
+};
 
 Game.prototype.draw = function() {
   this.context.clearRect(0,0,DIM_X,DIM_Y);
@@ -55,10 +58,11 @@ Game.prototype.wrap = function(pos) {
 };
 
 Game.prototype.checkCollisions = function() {
-  for (let i = 0; i < this.asteroids.length; i++) {
-    for (let j = i+1; j < this.asteroids.length; j++) {
-      if (this.asteroids[i].isCollidedWith(this.asteroids[j])) {
-        this.collide(this.asteroids[i],this.asteroids[j]);
+  let allObjs = this.allObjects();
+  for (let i = 0; i < allObjs.length; i++) {
+    for (let j = i+1; j < allObjs.length; j++) {
+      if (allObjs[i].isCollidedWith(allObjs[j])) {
+        this.collide(allObjs[i],allObjs[j]);
         i--;
         break;
       }
@@ -74,13 +78,25 @@ Game.prototype.step = function() {
 Game.prototype.remove = function(asteroid) {
   const index = this.asteroids.indexOf(asteroid);
   this.asteroids.splice(index,1);
-}
+};
 
 Game.prototype.collide = function(mo1,mo2) {
   if(mo1.isCollidedWith(mo2)) {
-    this.remove(mo1);
-    this.remove(mo2);
+    for (let i = 0; i < arguments.length; i++) {
+      if (!(arguments[i] instanceof Ship)) {
+        this.remove(arguments[i]);
+      } else {
+        this.relocate(arguments[i]);
+      }
+    }
   }
 };
 
+Game.prototype.relocate = function(obj) {
+  obj.pos = this.randomPosition();
+};
+
+Game.prototype.allObjects = function() {
+  return this.asteroids.concat(this.ship);
+};
 module.exports = Game;
