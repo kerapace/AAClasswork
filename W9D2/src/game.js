@@ -4,15 +4,16 @@ const Ship = require("./ship.js");
 
 const DIM_X = 800;
 const DIM_Y = 600;
-const NUM_ASTEROIDS = 10;
+const NUM_ASTEROIDS = 1;
+
 function Game(ctx) {
   this.asteroids = this.addAsteroids();
   this.context = ctx;
-  this.ship = new Ship({});
+  this.ship = new Ship();
 }
 
 Game.prototype.addAsteroids = function() {
-  let ast = []
+  let ast = [];
   for (let i = 0; i < NUM_ASTEROIDS; i++) {
     ast.push(new Asteroid({pos: this.randomPosition()}));
   }
@@ -20,7 +21,7 @@ Game.prototype.addAsteroids = function() {
 };
 
 Game.prototype.randomPosition = function() {
-  return [Math.random()*DIM_X, Math.random()*DIM_Y];
+  return [Math.floor(Math.random()*DIM_X), Math.floor(Math.random()*DIM_Y)];
 };
 
 Game.prototype.moveObjects = function() {
@@ -34,9 +35,10 @@ Game.prototype.draw = function() {
   this.context.clearRect(0,0,DIM_X,DIM_Y);
   this.context.fillStyle = "#222";
   this.context.fillRect(0,0,DIM_X,DIM_Y);
-  for(let i = 0; i < this.asteroids.length; i++) {
-    this.wrap(this.asteroids[i].pos);
-    this.asteroids[i].draw(this.context);
+  let allObjs = this.allObjects();
+  for(let i = 0; i < allObjs.length; i++) {
+    this.wrap(allObjs[i].pos);
+    allObjs[i].draw(this.context);
   }
 };
 
@@ -59,12 +61,10 @@ Game.prototype.wrap = function(pos) {
 
 Game.prototype.checkCollisions = function() {
   let allObjs = this.allObjects();
-  for (let i = 0; i < allObjs.length; i++) {
-    for (let j = i+1; j < allObjs.length; j++) {
+  for (let i = 0; i < allObjs.length-1; i++) {
+    for (let j = i+1; j < allObjs.length-1; j++) {
       if (allObjs[i].isCollidedWith(allObjs[j])) {
         this.collide(allObjs[i],allObjs[j]);
-        i--;
-        break;
       }
     }
   }
@@ -97,6 +97,7 @@ Game.prototype.relocate = function(obj) {
 };
 
 Game.prototype.allObjects = function() {
-  return this.asteroids.concat(this.ship);
+  return this.asteroids.concat([this.ship]);
 };
+
 module.exports = Game;
