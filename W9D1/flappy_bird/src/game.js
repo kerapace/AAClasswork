@@ -7,13 +7,13 @@ export default class FlappyBird {
     this.level = new Level(this.dimensions);
   }
 
-  animate() {
-    this.level.animate();
+  animate(ctx) {
+    this.level.animate(ctx);
   }
 
   restart() {
-    newLevel = new Level(this.dimensions);
+    let newLevel = new Level(this.dimensions);
     this.level = newLevel;
-    this.animate();
+    this.animate(this.ctx);
   }
 }

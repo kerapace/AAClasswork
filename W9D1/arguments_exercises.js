@@ -68,7 +68,7 @@
     Function.prototype.curry = function (numArgs) {
       let finalArgs = [];
       const that = this;
-      
+       
       return function _curry(...args) {
         finalArgs = finalArgs.concat(args);
         if (finalArgs.length === numArgs) {
