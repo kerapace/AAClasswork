@@ -25,6 +25,7 @@ const Util = {
   randomAsteroidSize: function() {
     return 15 + 35 * Math.random();
   }
+
 }
 
 module.exports = Util;

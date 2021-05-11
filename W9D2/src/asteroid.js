@@ -7,3 +7,6 @@ function Asteroid(options) {
   this.radius = options.radius || Util.randomAsteroidSize();
   this.color = options.color || "#997e5d";
 }
+Util.inherits(Asteroid, MovingObject);
+
+module.exports = Asteroid;
