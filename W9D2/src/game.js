@@ -3,7 +3,7 @@ const Util = require("./utils");
 
 const DIM_X = 800;
 const DIM_Y = 600;
-const NUM_ASTEROIDS = 4;
+const NUM_ASTEROIDS = 10;
 function Game(ctx) {
   this.asteroids = this.addAsteroids();
   this.context = ctx;
@@ -58,7 +58,9 @@ Game.prototype.checkCollisions = function() {
   for (let i = 0; i < this.asteroids.length; i++) {
     for (let j = i+1; j < this.asteroids.length; j++) {
       if (this.asteroids[i].isCollidedWith(this.asteroids[j])) {
-        alert("COLLISION");
+        this.collide(this.asteroids[i],this.asteroids[j]);
+        i--;
+        break;
       }
     }
   }
@@ -70,8 +72,15 @@ Game.prototype.step = function() {
 };
 
 Game.prototype.remove = function(asteroid) {
-  
+  const index = this.asteroids.indexOf(asteroid);
+  this.asteroids.splice(index,1);
 }
 
+Game.prototype.collide = function(mo1,mo2) {
+  if(mo1.isCollidedWith(mo2)) {
+    this.remove(mo1);
+    this.remove(mo2);
+  }
+};
 
 module.exports = Game;
