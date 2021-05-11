@@ -19,13 +19,33 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src
 
 /***/ }),
 
+/***/ "./src/game.js":
+/*!*********************!*\
+  !*** ./src/game.js ***!
+  \*********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const Asteroid = __webpack_require__(/*! ./asteroid */ \"./src/asteroid.js\");\nconst Util = __webpack_require__(/*! ./utils */ \"./src/utils.js\");\n\nconst DIM_X = 800;\nconst DIM_Y = 600;\nconst NUM_ASTEROIDS = 10;\nfunction Game(ctx) {\n  this.asteroids = this.addAsteroids();\n  this.context = ctx;\n}\n\nGame.prototype.addAsteroids = function() {\n  let ast = []\n  for (let i = 0; i < NUM_ASTEROIDS; i++) {\n    ast.push(new Asteroid({pos: this.randomPosition()}));\n  }\n  return ast;\n}\n\nGame.prototype.randomPosition = function() {\n  return [Math.random()*DIM_X, Math.random()*DIM_Y];\n}\n\nGame.prototype.moveObjects = function() {\n  for(let i = 0; i < this.asteroids.length; i++) {\n    this.asteroids[i].move();\n  }\n}\n\nGame.prototype.draw = function() {\n  this.context.clearRect(0,0,DIM_X,DIM_Y);\n  this.context.fillStyle = \"#222\";\n  this.context.fillRect(0,0,DIM_X,DIM_Y);\n  for(let i = 0; i < this.asteroids.length; i++) {\n    this.wrap(this.asteroids[i].pos);\n    this.asteroids[i].draw(this.context);\n  }\n};\n\nGame.prototype._XInsideWindow = function(pos) {\n  return pos[0] >= -50 && pos[0] <= DIM_X + 50;\n};\n\nGame.prototype._YInsideWindow = function(pos) {\n  return pos[1] >= -50 && pos[1] <= DIM_Y + 50;\n};\n\nGame.prototype.wrap = function(pos) {\n  if(!this._XInsideWindow(pos)) {\n    pos[0] = Util.goodModulus(pos[0]+50,DIM_X+100) - 50;\n  }\n  if(!this._YInsideWindow(pos)) {\n    pos[1] = Util.goodModulus(pos[1]+50,DIM_Y+100) - 50;\n  }\n};\n\nmodule.exports = Game;\n\n//# sourceURL=webpack:///./src/game.js?");
+
+/***/ }),
+
+/***/ "./src/game_view.js":
+/*!**************************!*\
+  !*** ./src/game_view.js ***!
+  \**************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const Game = __webpack_require__(/*! ./game */ \"./src/game.js\");\nconst Util = __webpack_require__(/*! ./utils */ \"./src/utils.js\");\n\nfunction GameView(ctx) {\n  this.game = new Game(ctx);\n  this.context = ctx;\n}\n\nGameView.prototype.start = function() {\n  setInterval(this.game.draw.bind(this.game),20);\n  setInterval(this.game.moveObjects.bind(this.game),20);\n};\n\nmodule.exports = GameView;\n\n//# sourceURL=webpack:///./src/game_view.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  let canvas = document.getElementById(\"asteroids-window\");\n  const ctx = canvas.getContext(\"2d\");\n  let mo = new MovingObject({\n    pos: [30, 30],\n    vel: [10, 10],\n    radius: 20,\n    color: \"#00FF00\"\n  });\n  mo.draw(ctx);\n  let ast = new Asteroid({\n    pos: [100, 100]\n  });\n  ast.draw(ctx);\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\nconst GameView = __webpack_require__(/*! ./game_view.js */ \"./src/game_view.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  let canvas = document.getElementById(\"asteroids-window\");\n  const ctx = canvas.getContext(\"2d\");\n  // let mo = new MovingObject({\n  //   pos: [30, 30],\n  //   vel: [10, 10],\n  //   radius: 20,\n  //   color: \"#00FF00\"\n  // });\n  // mo.draw(ctx);\n  // let ast = new Asteroid({\n  //   pos: [100, 100]\n  // });\n  // ast.draw(ctx);\n  const gameView = new GameView(ctx);\n  gameView.start();\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -45,7 +65,7 @@ eval("function MovingObject(options) {\n  this.pos = options.pos;\n  this.vel = 
   \**********************/
 /***/ ((module) => {
 
-eval("// Function.prototype.inherits = function(parentClass) {\n//   function Surrogate() {}\n//   Surrogate.prototype = parentClass.prototype;\n//   this.prototype = new Surrogate();\n//   this.prototype.constructor = this;\n// };\n\nconst Util = {\n  inherits: function(subClass,parentClass) {\n    function Surrogate() {}\n    Surrogate.prototype = parentClass.prototype;\n    subClass.prototype = new Surrogate();\n    subClass.prototype.constructor = subClass;\n  },\n\n  randomVec: function(length) {\n    const deg = 2 * Math.PI * Math.random();\n    return Util.scale([Math.sin(deg), Math.cos(deg)], length);\n  },\n  // Scale the length of a vector by the given amount.\n  scale: function(vec, m) {\n    return [vec[0] * m, vec[1] * m];\n  },\n\n  randomAsteroidSize: function() {\n    return 15 + 35 * Math.random();\n  }\n\n}\n\nmodule.exports = Util;\n\n//# sourceURL=webpack:///./src/utils.js?");
+eval("// Function.prototype.inherits = function(parentClass) {\n//   function Surrogate() {}\n//   Surrogate.prototype = parentClass.prototype;\n//   this.prototype = new Surrogate();\n//   this.prototype.constructor = this;\n// };\n\nconst Util = {\n  inherits: function(subClass,parentClass) {\n    function Surrogate() {}\n    Surrogate.prototype = parentClass.prototype;\n    subClass.prototype = new Surrogate();\n    subClass.prototype.constructor = subClass;\n  },\n\n  randomVec: function(length) {\n    const deg = 2 * Math.PI * Math.random();\n    return Util.scale([Math.sin(deg), Math.cos(deg)], length);\n  },\n  // Scale the length of a vector by the given amount.\n  scale: function(vec, m) {\n    return [vec[0] * m, vec[1] * m];\n  },\n\n  randomAsteroidSize: function() {\n    return 15 + 35 * Math.random();\n  },\n\n  goodModulus: function(x,y) {\n    return ((x % y) + y) % y;\n  }\n}\n\nmodule.exports = Util;\n\n//# sourceURL=webpack:///./src/utils.js?");
 
 /***/ })
 
