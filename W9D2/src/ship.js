@@ -11,6 +11,10 @@ function Ship(options = {}) {
   this.color = "#"+("00"+(Math.floor((16**3)*Math.random())).toString(16)).slice(-3);
 }
 
+Ship.prototype.power = function(impulse) {
+  [this.vel[0],this.vel[1]] = [this.vel[0] + impulse[0],this.vel[1] + impulse[1]];
+};
+
 Util.inherits(Ship,MovingObject);
 
 module.exports = Ship;

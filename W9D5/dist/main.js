@@ -10,6 +10,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+<<<<<<< HEAD
 /***/ "./src/clock.js":
 /*!**********************!*\
   !*** ./src/clock.js ***!
@@ -20,13 +21,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _war
 
 /***/ }),
 
+=======
+>>>>>>> 261cac18276d03b6fc76f5c1437f10a3e5474ead
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+<<<<<<< HEAD
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _warmup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./warmup */ \"./src/warmup.js\");\n/* harmony import */ var _clock_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clock.js */ \"./src/clock.js\");\n\n\n\n\n//# sourceURL=webpack://w9d5/./src/index.js?");
+=======
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _warmup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./warmup */ \"./src/warmup.js\");\n\n\n\n\n//# sourceURL=webpack://w9d5/./src/index.js?");
+>>>>>>> 261cac18276d03b6fc76f5c1437f10a3e5474ead
 
 /***/ }),
 
@@ -36,7 +43,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _war
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+<<<<<<< HEAD
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"htmlGenerator\": () => (/* binding */ htmlGenerator)\n/* harmony export */ });\n\nconst partyHeader = document.getElementById('party');\n\nconst htmlGenerator = (string, htmlElement) => {\n\n  let pTag = document.createElement(\"p\");\n  pTag.innerHTML = string;\n\n  htmlElement.innerHTML = pTag;\n};\n\nhtmlGenerator('Party Time.', partyHeader);\nhtmlGenerator('I <3 Vanilla DOM',partyHeader);\n\n\n\n//# sourceURL=webpack://w9d5/./src/warmup.js?");
+=======
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"htmlGenerator\": () => (/* binding */ htmlGenerator)\n/* harmony export */ });\n\nconst partyHeader = document.getElementById('party');\n\nconst htmlGenerator = (string, htmlElement) => {\n\n  let pTag = document.createElement(\"p\");\n  pTag.innerHTML = string;\n  htmlElement.appendChild(pTag);\n};\n\nhtmlGenerator('Party Time.', partyHeader);\nhtmlGenerator('I <3 Vanilla DOM',partyHeader);\n\n//# sourceURL=webpack://w9d5/./src/warmup.js?");
+>>>>>>> 261cac18276d03b6fc76f5c1437f10a3e5474ead
 
 /***/ })
 
