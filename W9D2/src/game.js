@@ -61,8 +61,8 @@ Game.prototype.wrap = function(pos) {
 
 Game.prototype.checkCollisions = function() {
   let allObjs = this.allObjects();
-  for (let i = 0; i < allObjs.length-1; i++) {
-    for (let j = i+1; j < allObjs.length-1; j++) {
+  for (let i = 0; i < allObjs.length; i++) {
+    for (let j = i+1; j < allObjs.length; j++) {
       if (allObjs[i].isCollidedWith(allObjs[j])) {
         this.collide(allObjs[i],allObjs[j]);
       }

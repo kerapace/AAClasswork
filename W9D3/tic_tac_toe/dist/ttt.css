@@ -1,0 +1,59 @@
+
+h1 {
+    display: block;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.ttt-board > li.winning-pos {
+    background-color: yellow;
+}
+
+.ttt-board > li.winning-pos:hover {
+    background-color: yellow;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ttt-board {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    height: 600px;
+    width: 600px;
+}
+
+.ttt-board > li {
+    height: 190px;
+    width: 190px;
+    border-left: 15px solid black;
+    border-bottom: 15px solid black;
+    font-family: sans-serif;
+    font-size: 72px;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ttt-board > li > h2 {
+    text-transform: uppercase;
+}
+
+.ttt-board > li:nth-child(3n - 2) {
+    border-left: 0px;
+
+}
+
+.ttt-board > li:nth-last-child(-n + 3) {
+    border-bottom: 0px;
+}
+
+.ttt-board > li:hover {
+    background-color: lightyellow;
+}
+
