@@ -6,7 +6,10 @@ export const htmlGenerator = (string, htmlElement) => {
   let pTag = document.createElement("p");
   pTag.innerHTML = string;
 
-  htmlElement.innerHTML = pTag;
+  Array.from(htmlElement.children).forEach((el) => {
+    htmlElement.removeChild(el);
+  });
+  htmlElement.appendChild(pTag);
 };
 
 htmlGenerator('Party Time.', partyHeader);
