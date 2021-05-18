@@ -44,7 +44,8 @@ const defaults = {
 window.$l.ajax = function(options) {
   this.extend(defaults,options);
   const xhr = new XMLHttpRequest();
-  xhr.onload = options.success;
+  xhr.onload = function() {
+    options.success(xhr.response);}
   xhr.open(options.type, options.url);
   xhr.send();
 };
