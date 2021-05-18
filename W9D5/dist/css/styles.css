@@ -22,6 +22,19 @@ h1 {
   margin-top: 100px;
 }
 
+.drop-down-dog-nav {
+
+}
+
+.drop-down-dog-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
 /*  Phase 4: Slide In & Out Classes */
 
 .align-left {

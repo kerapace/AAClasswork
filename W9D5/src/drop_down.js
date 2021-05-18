@@ -1,4 +1,5 @@
 
+
 const dogs = {
   "Corgi": "https://www.akc.org/dog-breeds/cardigan-welsh-corgi/",
   "Australian Shepherd": "https://www.akc.org/dog-breeds/australian-shepherd/",
@@ -24,10 +25,24 @@ const dogs = {
 
 function attachDogLinks() {
   let dogLinks = dogLinkCreator();
-  let dogContainer = document.querySelector('ul.drop-down-dog-list')
+  let dogContainer = document.querySelector('ul.drop-down-dog-list');
   dogLinks.forEach(el => {
     dogContainer.appendChild(el);
-  })
+  });
+}
+
+function toggleDropdownDogLinks(event) {
+    let dogContainer = document.querySelector('ul.drop-down-dog-list');
+    dogContainer.classList.toggle("hidden"); 
 }
 
 attachDogLinks();
+
+const dogNav = document.querySelector(".drop-down-dog-nav h3");
+
+document.addEventListener("DOMContentLoaded", () => {
+  dogNav.addEventListener("click", toggleDropdownDogLinks);
+});
+
+
+
