@@ -14,7 +14,7 @@ const Root = (props) => (
   <div><Tabs tabs={TabList}/></div>
 );
 
-const NameList = ["Jon","Jonathan","Jonathon","Jonothon","Yonatan","Johnathan","John","Jean","Nathan"];
+const NameList = ["Jon","Jonathan","Jonathon","Jonothon","Yonatan","Johnathan","John","Jean","Nathan","Jonatan"];
 
 const TabList = [
   {
@@ -34,4 +34,3 @@ const TabList = [
     content: <Autocomplete names={NameList}/>
   }
 ];
-

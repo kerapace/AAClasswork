@@ -20,7 +20,7 @@ export default class Tabs extends React.Component {
 
   click(idx) {
     return () => {
-    this.setState({selectedIdx: idx});
+      this.setState({selectedIdx: idx});
     };
   }
 }
@@ -32,5 +32,5 @@ const Header = (props) => {
         props.tabs.map((tab,idx) => <li key={idx} onClick={props.clickFunction(idx)}><h2>{tab.title}</h2></li>)
       }
       </ul>
-    </nav> );
+    </nav>);
 };

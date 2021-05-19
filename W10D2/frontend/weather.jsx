@@ -24,10 +24,15 @@ export default class Weather extends React.Component {
   }
   
   render() {
-    return (
-      <div className="weather">
-        <h2>The current temperature in {this.state.currentCity} is {this.state.temperature}°F</h2>
-      </div>
-    );
+    if(this.state.currentCity === "" || this.state.temperature === "") {
+      return <div className="weather"></div>
+    }
+    else {
+      return (
+        <div className="weather">
+          <h2>The current temperature in {this.state.currentCity} is {this.state.temperature}°F</h2>
+        </div>
+      );
+    }
   }
 }
