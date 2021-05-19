@@ -37,7 +37,7 @@ const defaults = {
   success: (e) => JSON.stringify(e),
   error: () => console.log("Something went wrong."),
   data: {},
-  contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+  contentType: 'application/json',
   type: 'GET'
 };
 
@@ -54,7 +54,7 @@ $l(() => $l.ajax({
   type: 'GET',
   url: "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=bcb83c4b54aee8418983c2aff3073b3b",
   success(data) {
-    console.log("We have your weather!")
+    console.log("We have your weather!");
     console.log(data);
   },
   error() {

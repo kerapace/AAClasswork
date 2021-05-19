@@ -1,0 +1,16 @@
+div#root {
+  font-family: 'Montserrat';
+  font-weight: 300;
+}
+
+ul.tab-header {
+  display: flex;
+  width: 100%;
+  list-style-type: none;
+  height: 75px;
+  align-items: center;
+}
+
+ul.tab-header > li {
+  padding: 10px;
+}
