@@ -1,4 +1,4 @@
-import {RECEIVE_TODOS, RECEIVE_TODO} from "../actions/todo_actions";
+import * as Todo from "../actions/todo_actions";
 
 const initialState = {
   1: {
@@ -17,11 +17,15 @@ const initialState = {
 
 const todosReducer = (state = initialState, action) => {
   Object.freeze(state);
-  let newState = Object.assign({}, state);
+  let newState = {};
   switch (action.type) {
-    case RECEIVE_TODOS:
-      return Object.assign({},)
-    case RECEIVE_TODO: 
+    case Todo.RECEIVE_TODOS:
+      action.todos.forEach(todo => {
+        newState[todo.id] = todo;
+      });
+      return newState;
+    case Todo.RECEIVE_TODO:
+      Object.assign(newState, state);
       if (action.todo.id === undefined) {
         let newId = Math.max(0, Object.keys(state)) + 1;
         newState[newId] = action.todo;
