@@ -1,15 +1,19 @@
-import TodoListItem from "./todo_list_item.jsx";
+import ToDoListItem from "./todo_list_item.jsx";
+import ToDoListForm from "./todo_list_form.jsx";
 import React from 'react';
 
-const ToDoList = (props) => (
-  <>
-    <h3>Todo List goes here!</h3>
-    <ul>
-      {props.todos.map((el, idx) => {
-        <TodoListItem item={el}/>
-      })}
-    </ul>
-  </>
-);
+const ToDoList = (props) => {
+  return (
+    <>
+      <h3>Todo List goes here!</h3>
+      <ul>
+        {props.todos.map((el, idx) => {
+          return <ToDoListItem key={el.id} item={el}/>
+        })}
+      </ul>
+      <ToDoListForm receiveTodo={props.receiveTodo}/>
+    </>
+  );
+};
 
 export default ToDoList;
