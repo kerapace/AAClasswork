@@ -6,6 +6,7 @@ const { allSteps } = require("../../../reducers/selectors");
 
 const mapStateToProps = (state, {todo}) => {
   return {
+    todo,
     steps: allSteps(state, todo)
   };
 }
