@@ -1,17 +1,21 @@
 import React from "react";
-class StepList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
+const toggleDone = (item) => Object.assign({},item,{done: !item.done});
 
-
-  render() {
-    return (<ul>
+const StepList = ({steps, removeStep, receiveStep}) => {
+  return (
+    <ul>
+      <h5>Steps</h5>
       {steps.map((step, idx) => (
-        <li key={idx}>{step.title}</li>
+        <li key={idx}>
+          {step.title}
+          {step.done ? "Done" : "Not Done"}
+          <button onClick={() => removeStep(step)}>Remove Step</button>
+          <button onClick={() => {receiveStep(toggleDone(step))}}>{step.done ? "Mark Incomplete" : "Mark Complete"}</button>
+        </li>
       ))}
-      </ul>
-    );
-  };
+    </ul>
+  );
 }
+
+export default StepList;
