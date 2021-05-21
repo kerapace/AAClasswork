@@ -1,5 +1,5 @@
 import {RECEIVE_STEP, RECEIVE_STEPS, REMOVE_STEP} from "../actions/step_actions";
-
+import {REMOVE_TODO} from "../actions/todo_actions";
 const initialState = {
   1: {
     id: 1,
@@ -36,6 +36,14 @@ const stepsReducer = (state = initialState, action) => {
     case REMOVE_STEP:
       Object.assign(newState, state);
       delete newState[action.step.id];
+      return newState;
+    case REMOVE_TODO:
+      Object.assign(newState, state);
+      Object.keys(state).forEach((key) => {
+        if(newState[key].todo_id === action.todo.id) {
+          delete newState[key];
+        }
+      });
       return newState;
     default:
       return state;

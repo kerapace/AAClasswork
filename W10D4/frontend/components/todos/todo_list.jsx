@@ -8,7 +8,7 @@ const ToDoList = (props) => {
       <h3>Todo List goes here!</h3>
       <ul>
         {props.todos.map((el, idx) => {
-          return <ToDoListItem key={el.id} item={el}/>
+          return <ToDoListItem key={el.id} item={el} removeTodo ={props.removeTodo} receiveTodo={props.receiveTodo}/>
         })}
       </ul>
       <ToDoListForm receiveTodo={props.receiveTodo}/>
