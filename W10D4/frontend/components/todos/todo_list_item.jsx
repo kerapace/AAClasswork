@@ -20,8 +20,8 @@ class ToDoListItem extends React.Component {
 
   render() {return (
     <li><p onClick={this.handleClick}>{this.props.item.title}</p>
-      <button onClick={() => removeTodo(this.props.item)}>Remove Todo</button>
-      <button onClick={() => {receiveTodo(toggleDone(this.props.item))}}>{this.props.item.done ? "Mark Incomplete" : "Mark Complete"}</button>
+      <button onClick={() => this.props.removeTodo(this.props.item)}>Remove Todo</button>
+      <button onClick={() => {this.props.receiveTodo(toggleDone(this.props.item))}}>{this.props.item.done ? "Mark Incomplete" : "Mark Complete"}</button>
       {this.state.detail ? <ToDoDetailViewContainer todo={this.props.item}/> : ""}
     </li>
   );}
