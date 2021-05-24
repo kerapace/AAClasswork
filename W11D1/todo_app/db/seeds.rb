@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+Todo.destroy_all
+
+todos = []
+
+10.times do
+  todos << Todo.create!(
+    title: Faker::Food.ingredient,
+    body: Faker::Food.description,
+    done: Faker::Boolean.boolean
+  )
+end
