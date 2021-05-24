@@ -9,7 +9,7 @@ import * as Todo from "./actions/todo_actions";
 import * as Step from "./actions/step_actions";
 import {allTodos} from "./reducers/selectors";
 
-import {fetchTodos} from "./util/todo_api_util";
+import {fetchTodos, createTodo} from "./util/todo_api_util";
 
 // window.store = configureStore();
 // window.Todo = Todo;
@@ -22,5 +22,10 @@ document.addEventListener('DOMContentLoaded', e => {
   ReactDOM.render(<Root store={store}/>, rootElement);
 
   window.store = store;
-  window.fetchTodos = fetchTodos;
+  window.fetchTodos = Todo.fetchTodos;
+  window.createTodo = Todo.createTodo;
+
+  store.dispatch((dispatch) => {
+    console.log("If this prints out, the thunk middleware is working!")
+  });
 });

@@ -12,6 +12,10 @@ class ToDoListForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchTodos();
+  }
+
   handleChange(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -20,30 +24,27 @@ class ToDoListForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.receiveTodo(Object.assign(
-      {id: new Date().getTime()},
-      this.state
-    ));
+    this.props.createTodo(this.state).then(() => this.setState({title: '', body: ''}));
   }
 
   render() {
     return (
-      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <label>Title:
-          <input name="title" type="text" placeholder="Title" />
+          <input name="title" onChange={this.handleChange} type="text" placeholder="Title" value={this.state.title} />
         </label>
         <br />
         <label>Body:
-          <input name="body" type="text" placeholder="Body" />
+          <input name="body" onChange={this.handleChange} type="text" placeholder="Body" value={this.state.body}/>
         </label>
         <br />
         <label>
-          <input name="done" type="radio" value="false" defaultChecked />
+          <input name="done" type="radio" value="false" onChange={this.handleChange} defaultChecked />
           Not Done
         </label>
         <br />
         <label>
-          <input name="done" type="radio" value="true" />
+          <input name="done" type="radio" onChange={this.handleChange} value="true" />
           Done
         </label>
         <br />

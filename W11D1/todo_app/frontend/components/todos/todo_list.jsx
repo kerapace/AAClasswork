@@ -11,7 +11,7 @@ const ToDoList = (props) => {
           return <ToDoListItem key={el.id} item={el} removeTodo ={props.removeTodo} receiveTodo={props.receiveTodo}/>
         })}
       </ul>
-      <ToDoListForm receiveTodo={props.receiveTodo}/>
+      <ToDoListForm createTodo = {props.createTodo} fetchTodos = {props.fetchTodos} receiveTodo={props.receiveTodo}/>
     </>
   );
 };
