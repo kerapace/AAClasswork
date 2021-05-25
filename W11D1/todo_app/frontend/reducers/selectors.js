@@ -7,3 +7,7 @@ export const allSteps = (state, todo) => (
     el.todo_id === todo.id
   ))
 );
+
+export const allErrors = (state) => {
+  return state.errors;
+}

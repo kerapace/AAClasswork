@@ -30,6 +30,11 @@ class ToDoListForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <aside>
+          <ul>
+          {this.props.errors.map((el,idx) => (<li key={idx}>{el}</li>))}
+          </ul>
+        </aside>
         <label>Title:
           <input name="title" onChange={this.handleChange} type="text" placeholder="Title" value={this.state.title} />
         </label>
