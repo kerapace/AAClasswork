@@ -6,7 +6,7 @@ const pokemonReducer = (state = initialState, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALL_POKEMON:
-      let newState = Object.assign({},state,{pokemon: action.pokemon});
+      let newState = action.pokemon;
       return newState;
     default:
       return state;
