@@ -1,0 +1,1287 @@
+Started GET "/" for ::1 at 2021-05-27 13:42:17 -0400
+  
+ActiveRecord::NoDatabaseError (FATAL:  database "BlueBird_development" does not exist
+):
+  
+activerecord (5.2.6) lib/active_record/connection_adapters/postgresql_adapter.rb:696:in `rescue in connect'
+activerecord (5.2.6) lib/active_record/connection_adapters/postgresql_adapter.rb:691:in `connect'
+activerecord (5.2.6) lib/active_record/connection_adapters/postgresql_adapter.rb:223:in `initialize'
+activerecord (5.2.6) lib/active_record/connection_adapters/postgresql_adapter.rb:48:in `new'
+activerecord (5.2.6) lib/active_record/connection_adapters/postgresql_adapter.rb:48:in `postgresql_connection'
+activerecord (5.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:830:in `new_connection'
+activerecord (5.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:874:in `checkout_new_connection'
+activerecord (5.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:853:in `try_to_checkout_new_connection'
+activerecord (5.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:814:in `acquire_connection'
+activerecord (5.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:538:in `checkout'
+activerecord (5.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:382:in `connection'
+activerecord (5.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:1033:in `retrieve_connection'
+activerecord (5.2.6) lib/active_record/connection_handling.rb:118:in `retrieve_connection'
+activerecord (5.2.6) lib/active_record/connection_handling.rb:90:in `connection'
+activerecord (5.2.6) lib/active_record/migration.rb:554:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.6) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.6) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (3322.2ms)[0m  [1m[35mCREATE DATABASE "BlueBird_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[35m (1284.4ms)[0m  [1m[35mCREATE DATABASE "BlueBird_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[35mSQL (21.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (9.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "chirps" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (253.2ms)[0m  [1m[35mCREATE TABLE "chirps" ("id" bigserial primary key, "body" text NOT NULL, "author_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (60.7ms)[0m  [1m[35mCREATE  INDEX  "index_chirps_on_author_id" ON "chirps"  ("author_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "follows" CASCADE[0m
+  ↳ db/schema.rb:26
+  [1m[35m (62.3ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "follower_id" integer NOT NULL, "followee_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:26
+  [1m[35m (61.7ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_followee_id" ON "follows"  ("followee_id")[0m
+  ↳ db/schema.rb:26
+  [1m[35m (57.8ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_follower_id" ON "follows"  ("follower_id")[0m
+  ↳ db/schema.rb:26
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  ↳ db/schema.rb:35
+  [1m[35m (97.6ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "user_id" integer NOT NULL, "chirp_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:35
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:42
+  [1m[35m (96.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying, "password_digest" character varying, "session_token" character varying)[0m
+  ↳ db/schema.rb:42
+  [1m[35m (68.6ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (47.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (89.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (35.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170828221731)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (19.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170823202541),
+(20170816164052),
+(20170816162825),
+(20170816171327),
+(20170816170838),
+(20170816174156);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (95.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (11.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-27 17:42:40.534741"], ["updated_at", "2021-05-27 17:42:40.534741"]]
+  ↳ db/schema.rb:13
+  [1m[35m (20.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (8.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35mSQL (1.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (1.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "chirps" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (113.6ms)[0m  [1m[35mCREATE TABLE "chirps" ("id" bigserial primary key, "body" text NOT NULL, "author_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (42.6ms)[0m  [1m[35mCREATE  INDEX  "index_chirps_on_author_id" ON "chirps"  ("author_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "follows" CASCADE[0m
+  ↳ db/schema.rb:26
+  [1m[35m (61.8ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "follower_id" integer NOT NULL, "followee_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:26
+  [1m[35m (55.1ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_followee_id" ON "follows"  ("followee_id")[0m
+  ↳ db/schema.rb:26
+  [1m[35m (37.1ms)[0m  [1m[35mCREATE  INDEX  "index_follows_on_follower_id" ON "follows"  ("follower_id")[0m
+  ↳ db/schema.rb:26
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "likes" CASCADE[0m
+  ↳ db/schema.rb:35
+  [1m[35m (70.6ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "user_id" integer NOT NULL, "chirp_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:35
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:42
+  [1m[35m (131.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying, "password_digest" character varying, "session_token" character varying)[0m
+  ↳ db/schema.rb:42
+  [1m[35m (44.2ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (44.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/schema.rb:42
+  [1m[35m (91.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (21.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170828221731)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (14.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170823202541),
+(20170816164052),
+(20170816162825),
+(20170816171327),
+(20170816170838),
+(20170816174156);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (96.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (2.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (1.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-27 17:42:41.632216"], ["updated_at", "2021-05-27 17:42:41.632216"]]
+  ↳ db/schema.rb:13
+  [1m[35m (18.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Update (2.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-05-27 17:42:41.666551"], ["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (18.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mChirp Load (2.0ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLike Load (2.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Morton Cummings"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Morton Cummings"], ["email", "paris_gerhold@runte.name"], ["password_digest", "$2a$12$SOUEqCSJDFzRtPdJg.19pefY.8ed/VsOrO9wz/p2IkmXSg1KvssGO"], ["session_token", "-Wkzr03AIYHnWfKruLuRHg"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (12.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Mrs. Leonardo Bartoletti"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Mrs. Leonardo Bartoletti"], ["email", "christene_kirlin@willms.net"], ["password_digest", "$2a$12$0P9NtIao4MDZexAxfidAKOchM5zON3/3VL5SwC7akLzQLOR9XVyaS"], ["session_token", "Qa6wlPEZdExkGELbHN0hkA"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (11.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Quinn Lesch"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Quinn Lesch"], ["email", "macy@ryan.info"], ["password_digest", "$2a$12$uPNpTHLK.a.AxeBFJcDvuuTUqBlPfG14QUeac9Clr1AGJKBWeAeJG"], ["session_token", "aSGGWmp_jVw0QG83FEiQ2g"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (12.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "The Hon. Hyacinth Kuhic"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "The Hon. Hyacinth Kuhic"], ["email", "osvaldo@mayert-roob.org"], ["password_digest", "$2a$12$aAgRZXkU3pXia1DHnoGUJOoNGp/X1nKUR1DzxEdYfHvL9v1vIyQgO"], ["session_token", "eXQs8VQj4czupCjwfy4WOw"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (11.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Fr. Ilona Nitzsche"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Fr. Ilona Nitzsche"], ["email", "providencia@murazik.co"], ["password_digest", "$2a$12$r.EsPwv20/Lg4Pt3RgAhX.HPgPqbuq.ocAUjForzeZDv3MUkROLu2"], ["session_token", "FaSKpMKmyUDohh2XQfeJjA"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (12.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Alda Goldner"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Alda Goldner"], ["email", "zackary.feest@berge.co"], ["password_digest", "$2a$12$GtdA6Y4AM1R1SQtNT2D5J.ohk1rOzlfuzUy5JQsdwZ6fTBljEWblW"], ["session_token", "RdjKFz79k3_oBo8wzM5g8A"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (14.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Fr. Jessie Kuhlman"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Fr. Jessie Kuhlman"], ["email", "irina.stoltenberg@gusikowski.org"], ["password_digest", "$2a$12$CTcAcR0awnQV1ZNlujkkW.m9CBSO0KsaJWD3sZcdIcAspbfM2leZi"], ["session_token", "GQcWdykdR-J5UdJlhbQYaQ"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (12.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Glenn Torphy V"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Glenn Torphy V"], ["email", "norris_kris@stroman-nitzsche.name"], ["password_digest", "$2a$12$dUrmvCQjXEHQbjOpXr8LUOUz.aFZ08kAqL3KBHZ4SsE9uu4IvIMbm"], ["session_token", "NRfVcO4fy1QnRahGw8Z0Rg"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (11.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:21
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Lorenzo Prohaska"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Lorenzo Prohaska"], ["email", "quinton@hansen-greenholt.org"], ["password_digest", "$2a$12$7z65S3jIgwMEQXQo9ARKYOLPkpyJizy57O1VYqMDkSraIp/I6/vm6"], ["session_token", "l_hvNucQcDXdP_pBV9ec6g"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (13.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[36mChirp Create (2.1ms)[0m  [1m[32mINSERT INTO "chirps" ("body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "You're a wizard, Harry."], ["author_id", 1], ["created_at", "2021-05-27 17:42:51.646738"], ["updated_at", "2021-05-27 17:42:51.646738"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (12.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mChirp Create (1.3ms)[0m  [1m[32mINSERT INTO "chirps" ("body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "It’s wingardium leviOsa, not leviosAH."], ["author_id", 1], ["created_at", "2021-05-27 17:42:51.674592"], ["updated_at", "2021-05-27 17:42:51.674592"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (8.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mChirp Create (2.1ms)[0m  [1m[32mINSERT INTO "chirps" ("body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "You're a wizard, Harry."], ["author_id", 1], ["created_at", "2021-05-27 17:42:51.708983"], ["updated_at", "2021-05-27 17:42:51.708983"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (12.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mChirp Create (1.5ms)[0m  [1m[32mINSERT INTO "chirps" ("body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "We’ve all got both light and dark inside us. What matters is the part we choose to act on. That’s who we really are."], ["author_id", 2], ["created_at", "2021-05-27 17:42:51.736604"], ["updated_at", "2021-05-27 17:42:51.736604"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (13.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mChirp Create (1.8ms)[0m  [1m[32mINSERT INTO "chirps" ("body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "To the well-organized mind, death is but the next great adventure."], ["author_id", 2], ["created_at", "2021-05-27 17:42:51.765666"], ["updated_at", "2021-05-27 17:42:51.765666"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (13.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mChirp Create (1.3ms)[0m  [1m[32mINSERT INTO "chirps" ("body", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "We’ve all got both light and dark inside us. What matters is the part we choose to act on. That’s who we really are."], ["author_id", 2], ["created_at", "2021-05-27 17:42:51.794043"], ["updated_at", "2021-05-27 17:42:51.794043"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (17.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:30
+  [1m[36mChirp Load (1.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[36mLike Create (2.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "chirp_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["chirp_id", 1], ["created_at", "2021-05-27 17:42:51.859408"], ["updated_at", "2021-05-27 17:42:51.859408"]]
+  ↳ db/seeds.rb:30
+  [1m[35m (13.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:30
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:31
+  [1m[36mChirp Load (1.5ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:31
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:31
+  [1m[36mLike Create (1.6ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "chirp_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 4], ["chirp_id", 2], ["created_at", "2021-05-27 17:42:51.892180"], ["updated_at", "2021-05-27 17:42:51.892180"]]
+  ↳ db/seeds.rb:31
+  [1m[35m (17.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:31
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:32
+  [1m[36mChirp Load (1.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:32
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:32
+  [1m[36mLike Create (1.3ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "chirp_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["chirp_id", 3], ["created_at", "2021-05-27 17:42:51.928400"], ["updated_at", "2021-05-27 17:42:51.928400"]]
+  ↳ db/seeds.rb:32
+  [1m[35m (12.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:32
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:33
+  [1m[36mChirp Load (1.2ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:33
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:33
+  [1m[36mLike Create (1.5ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "chirp_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["chirp_id", 3], ["created_at", "2021-05-27 17:42:51.959023"], ["updated_at", "2021-05-27 17:42:51.959023"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (13.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:34
+  [1m[36mChirp Load (1.0ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:34
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:34
+  [1m[36mLike Create (1.5ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "chirp_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 4], ["chirp_id", 1], ["created_at", "2021-05-27 17:42:51.992024"], ["updated_at", "2021-05-27 17:42:51.992024"]]
+  ↳ db/seeds.rb:34
+  [1m[35m (17.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:34
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:35
+  [1m[36mChirp Load (1.1ms)[0m  [1m[34mSELECT  "chirps".* FROM "chirps" WHERE "chirps"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[36mLike Create (1.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "chirp_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["chirp_id", 2], ["created_at", "2021-05-27 17:42:52.027561"], ["updated_at", "2021-05-27 17:42:52.027561"]]
+  ↳ db/seeds.rb:35
+  [1m[35m (12.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:35
+Started GET "/" for ::1 at 2021-05-27 13:43:08 -0400
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kerapace/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (3.8ms)
+Started GET "/" for ::1 at 2021-05-27 13:43:13 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 17816ms (Views: 17805.0ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 13634ms (Views: 13630.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 13:44:43 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 61ms (Views: 59.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 13:46:19 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 529ms (Views: 521.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 13:48:09 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 335ms (Views: 332.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2021-05-27 13:52:59 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"test", "email"=>"test@test.test", "password"=>"[FILTERED]"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "test"], ["email", "test@test.test"], ["password_digest", "$2a$12$anuORjBDmXyzn5gMkMVdT.up5SzGSC9fn6F4cmxUVgKd6KZJXI1Um"], ["session_token", "eVa2b7USvFVnQgW3t6ZjIw"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (13.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (1.4ms)
+Completed 200 OK in 350ms (Views: 23.4ms | ActiveRecord: 27.4ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 13:59:50 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 382ms (Views: 374.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 13:59:59 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 87ms (Views: 85.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:00:14 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 475ms (Views: 474.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2021-05-27 14:00:25 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"hagiography", "email"=>"hagiography", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (7.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "hagiography"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (6.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "hagiography"], ["email", "hagiography"], ["password_digest", "$2a$12$UQU3yb0G5pNkce.Wh0MCGuh3XXU7zym5RoTR.LfHlM5OWzB5nhai6"], ["session_token", "slMSQ56UcGEcDw9u1x0CqA"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (10.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (0.8ms)
+Completed 200 OK in 261ms (Views: 3.3ms | ActiveRecord: 24.8ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:05:20 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 533ms (Views: 531.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2021-05-27 14:09:31 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"6342", "email"=>"6343", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "6342"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (3.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "6342"], ["email", "6343"], ["password_digest", "$2a$12$GPW/1TOUwM8uIwhoePT21egUrvFp5uj6N/GMRLVA3arZHXstxgUPi"], ["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (11.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (0.5ms)
+Completed 200 OK in 250ms (Views: 2.6ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:09:35 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 139ms (Views: 134.4ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:27:33 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (7.4ms)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 1525ms (Views: 1516.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:29:12 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 523ms (Views: 521.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/login" for ::1 at 2021-05-27 14:29:24 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2021-05-27 14:29:30 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 76ms (Views: 73.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:33:25 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 481ms (Views: 479.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:33:48 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 137ms (Views: 129.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:33:50 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 607ms (Views: 605.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:34:08 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 415ms (Views: 413.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:34:17 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 58ms (Views: 55.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:34:19 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+Completed 200 OK in 303ms (Views: 301.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/chirps" for ::1 at 2021-05-27 14:34:26 -0400
+Processing by Api::ChirpsController#index as JSON
+  Rendering api/chirps/index.json.jbuilder
+  [1m[36mChirp Load (6.6ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/views/api/chirps/index.json.jbuilder:1
+  Rendered api/chirps/_chirp.json.jbuilder (0.5ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.0ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.0ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.1ms)
+  Rendered api/chirps/index.json.jbuilder (97.3ms)
+Completed 200 OK in 199ms (Views: 40.8ms | ActiveRecord: 67.0ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:34:34 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iSzUYf3UlmUEW3YDpZ2rcQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:84
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "6342"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:84
+  [1m[36mUser Update (15.1ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1 WHERE "users"."id" = $2[0m  [["session_token", "PKAM8XNP9ncskEvYL9UaBw"], ["id", 12]]
+  ↳ app/models/user.rb:84
+  [1m[35m (13.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:84
+Completed 200 OK in 52ms (Views: 0.3ms | ActiveRecord: 29.6ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:34:36 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:34:37 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:34:37 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:34:37 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started GET "/" for ::1 at 2021-05-27 14:35:31 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 337ms (Views: 336.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2021-05-27 14:35:48 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"notinourname", "email"=>"notinourname", "password"=>"[FILTERED]"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "notinourname"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "notinourname"], ["email", "notinourname"], ["password_digest", "$2a$12$AYby6sIfsnxxRa4U5HGsw.zbzaRFB58rDLEV4VXvF4iPuKffkAU9u"], ["session_token", "3_JNHpX6z-5Yr4s1HeQGdw"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (0.3ms)
+Completed 200 OK in 258ms (Views: 2.0ms | ActiveRecord: 13.9ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:35:51 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "3_JNHpX6z-5Yr4s1HeQGdw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:84
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "notinourname"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:84
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1 WHERE "users"."id" = $2[0m  [["session_token", "tDKeMWarRXiQkz-QjcSo6A"], ["id", 13]]
+  ↳ app/models/user.rb:84
+  [1m[35m (12.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:84
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 14.3ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:35:52 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:35:52 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:35:52 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:35:53 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:35:53 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:35:53 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:35:53 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:35:53 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:38:14 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:38:14 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started GET "/" for ::1 at 2021-05-27 14:38:40 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kerapace/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 2846ms (Views: 2845.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-05-27 14:38:52 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"notinourname", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "notinourname"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:58
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (0.6ms)
+Completed 200 OK in 248ms (Views: 3.4ms | ActiveRecord: 5.0ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:38:57 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "tDKeMWarRXiQkz-QjcSo6A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:84
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "notinourname"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:84
+  [1m[36mUser Update (8.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1 WHERE "users"."id" = $2[0m  [["session_token", "R_2wh329aL4nIUcdJWJbnQ"], ["id", 13]]
+  ↳ app/models/user.rb:84
+  [1m[35m (10.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:84
+Completed 200 OK in 30ms (Views: 0.7ms | ActiveRecord: 20.6ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:38:58 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:38:58 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:38:58 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:38:59 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:17 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:17 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:18 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:18 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:18 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:18 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:18 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:19 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:19 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:46:19 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started GET "/" for ::1 at 2021-05-27 14:46:53 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 136ms (Views: 134.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for ::1 at 2021-05-27 14:47:25 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"drunk", "email"=>"drunk", "password"=>"[FILTERED]"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "drunk"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (7.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:4
+Completed 401 Unauthorized in 2150ms (Views: 1.0ms | ActiveRecord: 10.1ms)
+
+
+Started POST "/api/users" for ::1 at 2021-05-27 14:47:33 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"drunk", "email"=>"drunk", "password"=>"[FILTERED]"}}
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (1.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "drunk"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (9.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "drunk"], ["email", "drunk"], ["password_digest", "$2a$12$nxfZhplsDLWCZO06TMxjveDprTLwxhNMNjh2t3oVk55hb8RktCm0u"], ["session_token", "mvLYPvsVLbvyuCRD_Od_pw"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (21.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (2.2ms)
+Completed 200 OK in 772ms (Views: 18.8ms | ActiveRecord: 33.0ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:43 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "mvLYPvsVLbvyuCRD_Od_pw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:84
+  [1m[36mUser Exists (4.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "drunk"], ["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:84
+  [1m[36mUser Update (2.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1 WHERE "users"."id" = $2[0m  [["session_token", "Lx1xkZtFhzom6bExEyq6-w"], ["id", 14]]
+  ↳ app/models/user.rb:84
+  [1m[35m (18.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:84
+Completed 200 OK in 66ms (Views: 1.1ms | ActiveRecord: 28.6ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:44 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:44 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:44 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:44 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:45 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:45 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:45 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:45 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:46 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:47:46 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started GET "/" for ::1 at 2021-05-27 14:53:50 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 165ms (Views: 163.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-05-27 14:58:15 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 671ms (Views: 666.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-05-27 14:58:26 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"notinourname", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "notinourname"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:58
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (1.3ms)
+Completed 200 OK in 772ms (Views: 6.8ms | ActiveRecord: 3.3ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:58:30 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "R_2wh329aL4nIUcdJWJbnQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:84
+  [1m[36mUser Exists (3.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "notinourname"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:84
+  [1m[36mUser Update (9.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1 WHERE "users"."id" = $2[0m  [["session_token", "nXXDkMW3TjBi3ZSWJlGpEQ"], ["id", 13]]
+  ↳ app/models/user.rb:84
+  [1m[35m (18.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:84
+Completed 200 OK in 65ms (Views: 0.9ms | ActiveRecord: 34.0ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:58:33 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:58:33 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:58:34 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:58:34 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started DELETE "/api/session" for ::1 at 2021-05-27 14:58:35 -0400
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started GET "/" for ::1 at 2021-05-27 15:08:51 -0400
+Processing by RootController#root as HTML
+  Rendering root/root.html.erb within layouts/application
+  Rendered root/root.html.erb within layouts/application (51.7ms)
+Started DELETE "/api/session" for ::1 at 2021-05-27 15:08:54 -0400
+Completed 200 OK in 1708ms (Views: 1674.5ms | ActiveRecord: 0.0ms)
+
+
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `reset_session_token!' for nil:NilClass):
+  
+app/controllers/application_controller.rb:15:in `logout!'
+app/controllers/api/sessions_controller.rb:14:in `destroy'
+Started POST "/api/session" for ::1 at 2021-05-27 15:10:38 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"notinourname", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (12.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "notinourname"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:58
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (3.3ms)
+Completed 200 OK in 880ms (Views: 9.9ms | ActiveRecord: 13.5ms)
+
+
+Started DELETE "/api/session" for ::1 at 2021-05-27 15:10:42 -0400
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "nXXDkMW3TjBi3ZSWJlGpEQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (6.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:84
+  [1m[36mUser Exists (9.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "notinourname"], ["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:84
+  [1m[36mUser Update (29.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1 WHERE "users"."id" = $2[0m  [["session_token", "6xGJFgtSQKUVdAlkSeYPIQ"], ["id", 13]]
+  ↳ app/models/user.rb:84
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:84
+Completed 200 OK in 230ms (Views: 1.1ms | ActiveRecord: 54.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-05-27 15:11:58 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"notinourname", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "notinourname"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:58
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (12.1ms)
+Completed 200 OK in 1109ms (Views: 21.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/chirps" for ::1 at 2021-05-27 15:12:06 -0400
+Processing by Api::ChirpsController#index as JSON
+  Rendering api/chirps/index.json.jbuilder
+  [1m[36mChirp Load (37.2ms)[0m  [1m[34mSELECT "chirps".* FROM "chirps"[0m
+  ↳ app/views/api/chirps/index.json.jbuilder:1
+  Rendered api/chirps/_chirp.json.jbuilder (8.8ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.3ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.6ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.5ms)
+  Rendered api/chirps/_chirp.json.jbuilder (9.2ms)
+  Rendered api/chirps/_chirp.json.jbuilder (0.3ms)
+  Rendered api/chirps/index.json.jbuilder (632.0ms)
+Completed 200 OK in 1113ms (Views: 264.8ms | ActiveRecord: 389.1ms)
+
+
